@@ -12,7 +12,11 @@
 
   <!-- Bootstrap core CSS -->
   <link href="libs/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
+  <script>
+if (window.location.href.indexOf('http://') === 0 && window.location.host.indexOf('127.0.0.1') !== 0) {
+window.location = window.location.href.replace('http://', 'https://');
+}
+</script>
 </head>
 
 <body style="padding-top: 70px;">
