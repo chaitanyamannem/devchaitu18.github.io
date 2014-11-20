@@ -1,6 +1,7 @@
 $(function () {
 
 var client = new Dropbox.Client({key: 'iiz72ijenjkeuw9'});
+console.log(client);
 
 client.authDriver(new Dropbox.AuthDriver.Popup({
 receiverUrl: window.location.origin + '/oauth_receiver.html'
