@@ -1,7 +1,10 @@
 $(function () {
-var APP_KEY = 'jcmzj1dcn8fg7qv';
 
-var client = new Dropbox.Client({key: APP_KEY});
+var client = new Dropbox.Client({key: 'iiz72ijenjkeuw9'});
+
+client.authDriver(new Dropbox.AuthDriver.Popup({
+receiverUrl: window.location.origin + '/oauth_receiver.html'
+}));
 
 // Authenticate when the user clicks the connect button.
 $('#connectDropbox').click(function (e) {
