@@ -3,14 +3,12 @@ $(function () {
 var client = new Dropbox.Client({key: 'iiz72ijenjkeuw9'});
 console.log(client);
 
-client.authDriver(new Dropbox.AuthDriver.Popup({
-receiverUrl: window.location.origin + '/oauth_receiver.html'
-}));
+
 
 // Authenticate when the user clicks the connect button.
 $('#connectDropbox').click(function (e) {
 e.preventDefault();
-client.authenticate(updateAuthenticationStatus);
+client.authenticate();
 });
 
 // Try to finish OAuth authorization.
