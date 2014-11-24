@@ -1,6 +1,6 @@
 (function(){
 var app = angular.module('syncBudget',[]);
-var datastore = {};
+var datastore = undefined;
 
 app.controller('SyncDropBox', function(){
 
