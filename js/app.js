@@ -7,7 +7,7 @@ app.controller('SyncDropBox', function(){
 	var isClientAuthenticated = false;
 	var APP_KEY = 'iiz72ijenjkeuw9';
 	var client = new Dropbox.Client({key: APP_KEY});
-	//console.log(client);
+	console.log(client);
 
 	// Authenticate when the user clicks the connect button.
 	$('#connectDropbox').click(function (e) {
@@ -40,10 +40,11 @@ app.controller('SyncDropBox', function(){
 });
 
 app.controller('AddExpense', function(){
-
-	// Now you have a datastore. The next few examples can be included here.
+		if(datastore){
+		// Now you have a datastore. The next few examples can be included here.
 	    var testExpensesTable = datastore.getTable('testExpensesTable');
 	    console.log(testExpensesTable);
+		}
 
 });
 

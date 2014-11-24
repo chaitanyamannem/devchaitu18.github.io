@@ -53,7 +53,8 @@
          <button ng-hide="syncDB.isClientAuthenticated" type="button" id="connectDropbox" class=" btn btn-default">Connect With Dropbox</button>
 
       </div>
-      <form ng-show="syncDB.isClientAuthenticated" ng-controller="AddExpense as addExpense" role="form">
+      <div ng-show="syncDB.isClientAuthenticated">
+      <form  ng-controller="AddExpense as addExpense" role="form">
         <div class="form-group">
           <label for="">Amount</label>
           <input name="amount" class="form-control"  placeholder="Enter Amount">
@@ -66,6 +67,7 @@
         
         <button id="saveExpense" type="submit" class="btn btn-default">Submit</button> 
   </form>
+  </div>   f<!-- form div -->
 
     </div><!-- /.container -->
 
