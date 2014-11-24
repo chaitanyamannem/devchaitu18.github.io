@@ -5,7 +5,7 @@ var datastore = {};
 app.controller('SyncDropBox', function(){
 
 	var isClientAuthenticated = false;
-	var  = 'iiz72ijenjkeuw9'
+	var APP_KEY = 'iiz72ijenjkeuw9';
 	var client = new Dropbox.Client({key: APP_KEY});
 	//console.log(client);
 
