@@ -5,6 +5,7 @@ var isClientAuthenticated = false;
 app.controller('SyncDropBox', function(){
 	this.num = 100;
 	this.isClientConnected = isClientAuthenticated;
+	console.log(this.isClientConnected);
 	var APP_KEY = 'iiz72ijenjkeuw9';
 	var client = new Dropbox.Client({key: APP_KEY});
 	console.log(client);
@@ -40,6 +41,7 @@ app.controller('SyncDropBox', function(){
 });
 
 app.controller('AddExpense', function(){
+		console.log(isClientAuthenticated);
 		if(isClientAuthenticated){
 		// Now you have a datastore. The next few examples can be included here.
 	    var testExpensesTable = datastore.getTable('testExpensesTable');
