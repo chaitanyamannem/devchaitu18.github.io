@@ -23,7 +23,7 @@
   </script>
   </head>
 
-  <body ng-controller="SyncDropBox as sync" style="padding-top: 70px;">
+  <body style="padding-top: 70px;">
 
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
       <div class="container">
@@ -46,7 +46,7 @@
       </div>
     </nav>
 
-    <div class="container">
+    <div ng-controller="SyncDropBox as sync" class="container">
 
       <div class="starter-template">
         <h1>Welcome to SyncBudget {{sync.num + 10}} - anywhere anytime anydevice</h1>
