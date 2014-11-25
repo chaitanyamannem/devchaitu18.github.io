@@ -1,10 +1,10 @@
 (function(){
 var app = angular.module('syncBudget',[]);
 var datastore = undefined;
-
+var isClientAuthenticated = false;
 app.controller('SyncDropBox', function(){
 	this.num = 100;
-	var isClientAuthenticated = false;
+	this.isClientConnected = isClientAuthenticated;
 	var APP_KEY = 'iiz72ijenjkeuw9';
 	var client = new Dropbox.Client({key: APP_KEY});
 	console.log(client);
@@ -40,14 +40,13 @@ app.controller('SyncDropBox', function(){
 });
 
 app.controller('AddExpense', function(){
-		if(datastore){
+		if(isClientAuthenticated){
 		// Now you have a datastore. The next few examples can be included here.
 	    var testExpensesTable = datastore.getTable('testExpensesTable');
+	    console.log("testExpensesTable ::::")
 	    console.log(testExpensesTable);
 		}
 
 });
-
-
 
 })();

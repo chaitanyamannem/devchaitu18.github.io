@@ -50,10 +50,10 @@
 
       <div class="starter-template">
         <h1>Welcome to SyncBudget {{sync.num + 10}} - anywhere anytime anydevice</h1>
-         <button ng-hide="syncDB.isClientAuthenticated" type="button" id="connectDropbox" class=" btn btn-default">Connect With Dropbox</button>
+         <button ng-hide="sync.isClientConnected" type="button" id="connectDropbox" class=" btn btn-default">Connect With Dropbox</button>
 
       </div>
-      <div ng-show="syncDB.isClientAuthenticated">
+      <div ng-show="sync.isClientConnected">
       <form  ng-controller="AddExpense as addExpense" role="form">
         <div class="form-group">
           <label for="">Amount</label>
