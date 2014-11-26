@@ -3,27 +3,30 @@ var app = angular.module('syncBudget',[]);
 
 	app.run(function($rootScope) {
 		var APP_KEY = 'iiz72ijenjkeuw9';
-		$rootScope.client = new Dropbox.Client({key: APP_KEY});
-		if($rootScope.client.isAuthenticated){
-			console.log($rootScope.client.isAuthenticated);
+		var client = new Dropbox.Client({key: APP_KEY});
+		if(client.isAuthenticated){
+			
 			$rootScope.isClientAuthenticated = true;
+			$rootScope.user = client.dropboxUid;
 		} else {
 			$rootScope.isClientAuthenticated = false;
 		}
-		// Authenticate when the user clicks the connect button.
-		$('#connectDropbox').click(function (e) {
-			e.preventDefault();
-			$rootScope.client.authenticate();
-		});
+		
 
 		// Try to finish OAuth authorization.
-			$rootScope.client.authenticate({interactive: false}, function (error) {
+			client.authenticate({interactive: false}, function (error) {
 				if (error) {
 					alert('Authentication error: ' + error);
 				}
 
 				
 			});
+
+			// Authenticate when the user clicks the connect button.
+		$('#connectDropbox').click(function (e) {
+			e.preventDefault();
+			client.authenticate();
+		});
 
 
 
