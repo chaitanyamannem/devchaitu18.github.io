@@ -7,8 +7,8 @@ var app = angular.module('syncBudget',[]);
 		if(client.isAuthenticated){
 			
 			$rootScope.isClientAuthenticated = true;
-			console.log(client.dropboxUid);
-			$rootScope.user = client.dropboxUid;
+			console.log(client.dropboxUid());
+			$rootScope.user = client.dropboxUid();
 		} else {
 			$rootScope.isClientAuthenticated = false;
 		}
