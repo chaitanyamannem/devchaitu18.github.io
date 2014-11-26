@@ -4,8 +4,8 @@ var app = angular.module('syncBudget',[]);
 	app.run(function($rootScope) {
 		var APP_KEY = 'iiz72ijenjkeuw9';
 		var client = new Dropbox.Client({key: APP_KEY});
-		if(client.isAuthenticated){
-			
+		if(client.isAuthenticated()){
+			console.log(client.isAuthenticated())
 			$rootScope.isClientAuthenticated = true;
 			console.log(client.dropboxUid());
 			$rootScope.user = client.dropboxUid();
