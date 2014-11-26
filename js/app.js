@@ -21,17 +21,10 @@ var app = angular.module('syncBudget',[]);
 					alert('Authentication error: ' + error);
 				}
 
-				//console.log("client authenticated");
-				var datastoreManager = client.getDatastoreManager();
-				datastoreManager.openDefaultDatastore(function (error, datastore) {
-					if (error) {
-						alert('Error opening default datastore: ' + error);
-					}
-				 $rootScope.userDatastore = datastore;
-				 var testExpensesTable = datastore.getTable('testExpensesTable');
-		    	 console.log("testExpensesTable ::::")
-		    	 console.log(testExpensesTable);
+				
 			});
+
+
 
 		});
 
@@ -41,6 +34,17 @@ var app = angular.module('syncBudget',[]);
 		
 		console.log("Rootscope::");
 		console.log($scope.client);
+
+		//console.log("client authenticated");
+				/*var datastoreManager = $rootScope.client.getDatastoreManager();
+				datastoreManager.openDefaultDatastore(function (error, datastore) {
+					if (error) {
+						alert('Error opening default datastore: ' + error);
+					}
+				 $rootScope.userDatastore = datastore;
+				 var testExpensesTable = datastore.getTable('testExpensesTable');
+		    	 console.log("testExpensesTable ::::")
+		    	 console.log(testExpensesTable);*/
 
 		
 	
