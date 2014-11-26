@@ -56,10 +56,10 @@
       <div class="starter-template">
         <h1>Welcome to SyncBudget {{sync.num + 10}} - anywhere anytime anydevice</h1>
         <h2>{{sync.isClientConnected}}</h2>
-         <button ng-hide="true" type="button" id="connectDropbox" class=" btn btn-default">Connect With Dropbox</button>
+         <button ng-hide="{{sync.isClientConnected}}" type="button" id="connectDropbox" class=" btn btn-default">Connect With Dropbox</button>
 
       </div>
-      <div ng-show="sync.isClientConnected">
+      <div ng-show="{{sync.isClientConnected}}">
       <p>{{sync.isClientConnected}}</p>
       <form  ng-controller="AddExpense as addExpense" role="form">
         <div class="form-group">
