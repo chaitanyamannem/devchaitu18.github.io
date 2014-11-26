@@ -59,7 +59,7 @@
          <button ng-hide="{{sync.isClientConnected}}" type="button" id="connectDropbox" class=" btn btn-default">Connect With Dropbox</button>
 
       </div>
-      <div ng-show="{{sync.isClientConnected}}">
+      <div class="formContainer" ng-show="{{sync.isClientConnected}}">
       <p>{{sync.isClientConnected}}</p>
       <form  ng-controller="AddExpense as addExpense" role="form">
         <div class="form-group">
