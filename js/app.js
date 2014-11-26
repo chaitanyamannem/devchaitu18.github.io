@@ -16,21 +16,23 @@ var app = angular.module('syncBudget',[]);
 		});
 
 		// Try to finish OAuth authorization.
-		$rootScope.client.authenticate({interactive: false}, function (error) {
-			if (error) {
-				alert('Authentication error: ' + error);
-			}
-
-			//console.log("client authenticated");
-			var datastoreManager = client.getDatastoreManager();
-			datastoreManager.openDefaultDatastore(function (error, datastore) {
+			$rootScope.client.authenticate({interactive: false}, function (error) {
 				if (error) {
-					alert('Error opening default datastore: ' + error);
+					alert('Authentication error: ' + error);
 				}
-			 $rootScope.userDatastore = datastore;
-			 var testExpensesTable = datastore.getTable('testExpensesTable');
-	    	 console.log("testExpensesTable ::::")
-	    	 console.log(testExpensesTable);
+
+				//console.log("client authenticated");
+				var datastoreManager = client.getDatastoreManager();
+				datastoreManager.openDefaultDatastore(function (error, datastore) {
+					if (error) {
+						alert('Error opening default datastore: ' + error);
+					}
+				 $rootScope.userDatastore = datastore;
+				 var testExpensesTable = datastore.getTable('testExpensesTable');
+		    	 console.log("testExpensesTable ::::")
+		    	 console.log(testExpensesTable);
+			});
+
 		});
 
 	});
