@@ -59,9 +59,9 @@
          <button ng-hide="{{sync.isClientConnected}}" type="button" id="connectDropbox" class=" btn btn-default">Connect With Dropbox</button>
 
       </div>
-      <div class="formContainer" ng-show="{{sync.isClientConnected}}">
+      <div class="formContainer" >
       <p>{{sync.isClientConnected}}</p>
-      <form  ng-controller="AddExpense as addExpense" role="form">
+      <form ng-show="{{sync.isClientConnected}}" ng-controller="AddExpense as addExpense" role="form">
         <div class="form-group">
           <label for="">Amount</label>
           <input name="amount" class="form-control"  placeholder="Enter Amount">
