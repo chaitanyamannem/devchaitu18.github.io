@@ -5,8 +5,8 @@ var isClientAuthenticated = false;
 
 app.controller('SyncDropBox', function(){
 	this.num = 100;
-	
-	this.isClientConnected = 1;
+
+	this.isClientConnected = true;
 	console.log(this.isClientConnected);
 	var APP_KEY = 'iiz72ijenjkeuw9';
 	var client = new Dropbox.Client({key: APP_KEY});
