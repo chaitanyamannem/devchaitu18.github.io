@@ -1,52 +1,48 @@
 (function(){
 var app = angular.module('syncBudget',[]);
 
-	app.controller('SyncDropBox', function($scope){
-		
-		$scope.num = 100;
-		$scope.isClientAuthenticated = false;
-		console.log($scope.isClientAuthenticated);
-		
+	app.run(function($rootScope) {
 		var APP_KEY = 'iiz72ijenjkeuw9';
-		var client = new Dropbox.Client({key: APP_KEY});
-		console.log(client);
-
+		$rootScope.client = new Dropbox.Client({key: APP_KEY});
+		if($rootScope.client.isAuthenticated){
+			$rootScope.isClientAuthenticated = true;
+		} else {
+			$rootScope.isClientAuthenticated = false;
+		}
 		// Authenticate when the user clicks the connect button.
 		$('#connectDropbox').click(function (e) {
 			e.preventDefault();
-			client.authenticate();
+			$rootScope.client.authenticate();
 		});
 
 		// Try to finish OAuth authorization.
-		client.authenticate({interactive: false}, function (error) {
+		$rootScope.client.authenticate({interactive: false}, function (error) {
 			if (error) {
 				alert('Authentication error: ' + error);
 			}
 		});
 
-		if (client.isAuthenticated()) {
-			$scope.isClientAuthenticated = true;
+	});
+
+	app.controller('SyncDropBox', function($scope){
+		
+		if ($rootScope.client.isAuthenticated()) {
+			
 			//console.log("client authenticated");
 			var datastoreManager = client.getDatastoreManager();
 			datastoreManager.openDefaultDatastore(function (error, datastore) {
 				if (error) {
 					alert('Error opening default datastore: ' + error);
 				}
-			 $scope.userDatastore = datastore;
+			 $rootScope.userDatastore = datastore;
+			 var testExpensesTable = datastore.getTable('testExpensesTable');
+	    	 console.log("testExpensesTable ::::")
+	    	 console.log(testExpensesTable);
 		   
 		});
 
 		} 
-
-		console.log($scope.isClientAuthenticated);
-		if($scope.isClientAuthenticated){
-		// Now you have a datastore. The next few examples can be included here.
-	    var testExpensesTable = datastore.getTable('testExpensesTable');
-	    console.log("testExpensesTable ::::")
-	    console.log(testExpensesTable);
-		}
-
-
+	
 	});
 
 
