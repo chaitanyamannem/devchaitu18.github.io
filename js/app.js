@@ -2,9 +2,11 @@
 var app = angular.module('syncBudget',[]);
 var datastore = undefined;
 var isClientAuthenticated = false;
+
 app.controller('SyncDropBox', function(){
 	this.num = 100;
-	this.isClientConnected = false;
+	
+	this.isClientConnected = 1;
 	console.log(this.isClientConnected);
 	var APP_KEY = 'iiz72ijenjkeuw9';
 	var client = new Dropbox.Client({key: APP_KEY});
