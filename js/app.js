@@ -20,14 +20,7 @@ var app = angular.module('syncBudget',[]);
 			if (error) {
 				alert('Authentication error: ' + error);
 			}
-		});
 
-	});
-
-	app.controller('SyncDropBox', function($scope){
-		
-		if ($rootScope.client.isAuthenticated()) {
-			
 			//console.log("client authenticated");
 			var datastoreManager = client.getDatastoreManager();
 			datastoreManager.openDefaultDatastore(function (error, datastore) {
@@ -38,10 +31,16 @@ var app = angular.module('syncBudget',[]);
 			 var testExpensesTable = datastore.getTable('testExpensesTable');
 	    	 console.log("testExpensesTable ::::")
 	    	 console.log(testExpensesTable);
-		   
 		});
 
-		} 
+	});
+
+	app.controller('SyncDropBox', function($scope){
+		
+		console.log("Rootscope::");
+		console.log($scope.client);
+
+		
 	
 	});
 
