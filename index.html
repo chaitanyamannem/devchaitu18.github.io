@@ -54,14 +54,14 @@
     <div class="container" >
 
       <div class="starter-template">
-        <h1>Welcome to SyncBudget {{sync.num + 10}} - anywhere anytime anydevice</h1>
+        <h1>Welcome to SyncBudget {{num + 10}} - anywhere anytime anydevice</h1>
         <h2>{{sync.isClientAuthenticated}}</h2>
-         <button ng-hide="{{sync.isClientAuthenticated}}" type="button" id="connectDropbox" class=" btn btn-default">Connect With Dropbox</button>
+         <button ng-hide="{{isClientAuthenticated}}" type="button" id="connectDropbox" class=" btn btn-default">Connect With Dropbox</button>
 
       </div>
       <div class="formContainer" >
-      <p>{{sync.isClientAuthenticated}}</p>
-      <form ng-show="{{sync.isClientAuthenticated}}"  role="form">
+      <p>{{isClientAuthenticated}}</p>
+      <form ng-show="{{isClientAuthenticated}}"  role="form">
         <div class="form-group">
           <label for="">Amount</label>
           <input name="amount" class="form-control"  placeholder="Enter Amount">
