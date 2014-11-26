@@ -28,7 +28,7 @@ var app = angular.module('syncBudget',[]);
 
 		});
 
-	});
+	
 
 	app.controller('SyncDropBox', function($scope){
 		
