@@ -60,9 +60,10 @@
 
       </div>
       <div ng-show="sync.isClientConnected">
+      <p>{{sync.isClientConnected}}</p>
       <form  ng-controller="AddExpense as addExpense" role="form">
         <div class="form-group">
-          <label for="">Amount{{sync.isClientConnected}}</label>
+          <label for="">Amount</label>
           <input name="amount" class="form-control"  placeholder="Enter Amount">
         </div>
         <div class="form-group">
