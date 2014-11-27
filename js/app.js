@@ -21,9 +21,11 @@ var app = angular.module('syncBudget',[]);
 			console.log("First check client is Authenticated::");
 			console.log(client.isAuthenticated());
 			$rootScope.isClientAuthenticated = true;
-			console.log(client.getAccountInfo());
-			console.log(client.getAccountInfo().name);
-			$rootScope.user = client.dropboxUid();
+			client.getAccountInfo(function (error, info) {
+				$rootScope.user = info.name;
+			});
+			
+			
 		}
 
 		// Authenticate when the user clicks the connect button.
@@ -33,8 +35,9 @@ var app = angular.module('syncBudget',[]);
 			console.log("Client.autenticate called when connect to dropbox is clicked");
 			if(client.isAuthenticated()){
 				$rootScope.isClientAuthenticated = true;
-				console.log(client.dropboxUid());
-				$rootScope.user = client.dropboxUid();
+				client.getAccountInfo(function (error, info) {
+					$rootScope.user = info.name;
+				});
 			}
 			
 		});
