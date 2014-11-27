@@ -18,7 +18,7 @@ var app = angular.module('syncBudget',[]);
 
 		// Try to finish OAuth authorization.
 			client.authenticate({interactive: false}, function (error) {
-				consile.log("Client.autenticate called when connect to dropbox is clicked")
+				console.log("Client.autenticate called when connect to dropbox is clicked")
 				if (error) {
 					alert('Authentication error: ' + error);
 				}
