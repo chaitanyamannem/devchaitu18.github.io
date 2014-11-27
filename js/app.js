@@ -7,7 +7,7 @@ var app = angular.module('syncBudget',[]);
 		var client = new Dropbox.Client({key: APP_KEY});
 		
 		$rootScope.isClientAuthenticated = false;
-		$rootScope.user = "Guest";	
+			
 		
 		// Try to finish OAuth authorization.
 		client.authenticate({interactive: false}, function (error) {
