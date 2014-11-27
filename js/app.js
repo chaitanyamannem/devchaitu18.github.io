@@ -24,6 +24,7 @@ var app = angular.module('syncBudget',[]);
 			client.getAccountInfo(function (error, info) {
 				console.log(info.name);
 				$rootScope.user = info.name;
+				console.log($rootScope.user);
 			});
 			
 			
