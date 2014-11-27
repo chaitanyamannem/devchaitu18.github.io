@@ -22,9 +22,9 @@ var app = angular.module('syncBudget',[]);
 			console.log(client.isAuthenticated());
 			$rootScope.isClientAuthenticated = true;
 			client.getAccountInfo(function (error, info) {
-				console.log(info.name);
+				
 				$rootScope.user = info.name;
-				console.log($rootScope.user);
+				$rootScope.$apply();
 			});
 			
 			
@@ -39,6 +39,7 @@ var app = angular.module('syncBudget',[]);
 				$rootScope.isClientAuthenticated = true;
 				client.getAccountInfo(function (error, info) {
 					$rootScope.user = info.name;
+					$rootScope.$apply();
 				});
 			}
 			
