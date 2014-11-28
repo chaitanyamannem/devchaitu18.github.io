@@ -10,11 +10,11 @@ var app = angular.module('syncBudget',['ngRoute']);
 
 		// route for the categories page
 		.when('/categories', {
-			templateUrl : 'pages/categories.html'
+			templateUrl : 'categories.html'
 		})
 
 		.when('/home', {
-			templateUrl : 'pages/addExpense.html'
+			templateUrl : 'addExpense.html'
 		});
 
 
