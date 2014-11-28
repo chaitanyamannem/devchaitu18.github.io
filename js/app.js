@@ -1,20 +1,41 @@
 (function(){
-var app = angular.module('syncBudget',[]);
+var app = angular.module('syncBudget',['ngRoute']);
 
+	//Routing Configuration
+
+	app.config(function($routeProvider) {
+
+
+		$routeProvider
+
+		// route for the categories page
+		.when('/categories', {
+			templateUrl : 'pages/categories.html'
+		})
+
+		.when('/home', {
+			templateUrl : 'pages/addExpense.html'
+		});
+
+
+
+	});
+
+	//Dropbox Intialization is done here
 	app.run(function($rootScope) {
-		
+
 		var APP_KEY = 'iiz72ijenjkeuw9';
 		var client = new Dropbox.Client({key: APP_KEY});
-		
+
 		$rootScope.isClientAuthenticated = false;
-			
-		
+
+
 		// Try to finish OAuth authorization.
 		client.authenticate({interactive: false}, function (error) {
 			if (error) {
 				alert('Authentication error: ' + error);
 			}
-		
+
 		});
 
 		if(client.isAuthenticated()){
@@ -22,12 +43,12 @@ var app = angular.module('syncBudget',[]);
 			console.log(client.isAuthenticated());
 			$rootScope.isClientAuthenticated = true;
 			client.getAccountInfo(function (error, info) {
-				
+
 				$rootScope.user = info.name;
 				$rootScope.$apply();
 			});
-			
-			
+
+
 		}
 
 		// Authenticate when the user clicks the connect button.
@@ -42,17 +63,17 @@ var app = angular.module('syncBudget',[]);
 					$rootScope.$apply();
 				});
 			}
-			
-		});
-
-
 
 		});
 
-	
+
+
+		});
+
+
 
 	app.controller('SyncDropBox', function($scope){
-		
+
 		console.log("Rootscope::");
 		console.log($scope.client);
 
@@ -67,8 +88,8 @@ var app = angular.module('syncBudget',[]);
 		    	 console.log("testExpensesTable ::::")
 		    	 console.log(testExpensesTable);*/
 
-		
-	
+
+
 	});
 
 
