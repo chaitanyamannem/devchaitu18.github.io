@@ -76,8 +76,8 @@ var app = angular.module('syncBudget',['ngRoute','ui.bootstrap','ngTouch']);
 		});
 
 
-		app.controller('iconCarousel', function($scope) {
-
+		app.controller('categoryIconCarousel', function($scope) {
+			console.log("Entered categoryIconCarousel");
 			$scope.myInterval = 1000;
 			var icons = $scope.icons = ["coffee",
 			"credit-card",
