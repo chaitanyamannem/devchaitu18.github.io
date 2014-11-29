@@ -14,7 +14,7 @@ var app = angular.module('syncBudget',['ngRoute']);
 		})
 
 		//route to sync budget medium collection blog
-		.when('/blog'), {
+		.when('/blog', {
 			templateUrl : 'blog.html'
 		})
 
