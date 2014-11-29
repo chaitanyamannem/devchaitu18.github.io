@@ -1,9 +1,9 @@
     <div style="padding-top: 70px;" ng-controller="categoryIconCarousel">
-      <div style="height: 305px">
+      <div style="width:305px; height: 305px">
         <carousel interval="myInterval">
           <slide ng-repeat="(key,value) in slides" active="slide.active">
             <!-- <img  ng-src="" style="margin:auto;"> -->
-            <span style="background-color: #1D9E74; width:305px;height:200px" class="fa fa-{{value}} fa-5x"></span>
+            <span style="background-color: #1D9E74; height:200px; padding-top: 70px;" class="fa fa-{{value}} fa-5x"></span>
             <div class="carousel-caption">
               <h4>{{value}}</h4>
             </div>
