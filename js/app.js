@@ -76,8 +76,34 @@ var app = angular.module('syncBudget',['ngRoute','ui.bootstrap','ngTouch']);
 		});
 
 
+		app.controller('iconCarousel', function($scope) {
 
-	app.controller('SyncDropBox', function($scope){
+			$scope.myInterval = 1000;
+			var icons = $scope.icons = ["coffee",
+			"credit-card",
+			"cut",
+			"glass",
+			"hospital-o",
+			"heart-o",
+			"bus",
+			"bicycle",
+			"bank",
+			"book",
+			"beer",
+			"cab",
+			"child"
+
+
+
+			];
+
+
+
+		});
+
+
+
+	/*app.controller('SyncDropBox', function($scope){
 
 		console.log("Rootscope::");
 		console.log($scope.client);
@@ -91,36 +117,13 @@ var app = angular.module('syncBudget',['ngRoute','ui.bootstrap','ngTouch']);
 				 $rootScope.userDatastore = datastore;
 				 var testExpensesTable = datastore.getTable('testExpensesTable');
 		    	 console.log("testExpensesTable ::::")
-		    	 console.log(testExpensesTable);*/
+		    	 console.log(testExpensesTable);
 
 
 
-	});
-
-	app.controller('iconCarousel', function($scope) {
-
-		$scope.myInterval = 1000;
-		var icons = $scope.icons = ["coffee",
-																"credit-card",
-																"cut",
-																"glass",
-																"hospital-o",
-																"heart-o",
-																"bus",
-																"bicycle",
-																"bank",
-																"book",
-																"beer",
-																"cab",
-																"child"
+	});*/
 
 
-
-																 ];
-
-
-
-	});
 
 
 })();
