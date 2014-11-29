@@ -1,5 +1,5 @@
 (function(){
-var app = angular.module('syncBudget',['ngRoute']);
+var app = angular.module('syncBudget',['ngRoute','ui.bootstrap','ngTouch']);
 
 	//Routing Configuration
 
@@ -92,6 +92,31 @@ var app = angular.module('syncBudget',['ngRoute']);
 				 var testExpensesTable = datastore.getTable('testExpensesTable');
 		    	 console.log("testExpensesTable ::::")
 		    	 console.log(testExpensesTable);*/
+
+
+
+	});
+
+	app.controller('iconCarousel', function($scope) {
+
+		$scope.myInterval = 1000;
+		var icons = $scope.icons = ["coffee",
+																"credit-card",
+																"cut",
+																"glass",
+																"hospital-o",
+																"heart-o",
+																"bus",
+																"bicycle",
+																"bank",
+																"book",
+																"beer",
+																"cab",
+																"child"
+
+
+
+																 ];
 
 
 
