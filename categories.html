@@ -1,7 +1,7 @@
     <div ng-controller="categoryIconCarousel">
       <div style="height: 305px">
         <carousel interval="myInterval">
-          <slide ng-repeat="slide(key,value) in slides" active="slide.active">
+          <slide ng-repeat="(key,value) in slides" active="slide.active">
             <span class="fa fa-{{value}}"></span>
             <div class="carousel-caption">
               <h4>{{value}}</h4>
