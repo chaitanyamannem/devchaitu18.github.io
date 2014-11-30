@@ -91,7 +91,22 @@ var app = angular.module('syncBudget',['ngRoute','ui.bootstrap','ngTouch']);
 			"book",
 			"beer",
 			"cab",
-			"child"
+			"child",
+			"wrench",
+			"video-camera",
+			"trophy",
+			"spoon",
+			"shopping-cart",
+			"shield",
+			"rocket",
+			"plane",
+			"phone",
+			"music",
+			"lemon-o",
+			"gift",
+			"cutlery",
+			"cog",
+			"briefcase"
 
 
 
