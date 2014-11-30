@@ -13,6 +13,10 @@ var app = angular.module('syncBudget',['ngRoute','ui.bootstrap','ngTouch']);
 			templateUrl : 'categories.html'
 		})
 
+		.when('/contact', {
+			templateUrl : 'contact.html'
+		})
+
 		//route to sync budget medium collection blog
 		.when('/blog', {
 			templateUrl : 'blog.html'
