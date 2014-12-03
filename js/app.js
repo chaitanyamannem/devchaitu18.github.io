@@ -64,7 +64,7 @@ var app = angular.module('syncBudget',['ngRoute','ui.bootstrap','ngTouch']);
 
 				// Now you have a datastore. The next few examples can be included here.
 				$rootScope.datastore = defaultDatastore;
-				$rootScope.apply();
+				$rootScope.$apply();
 			});
 		};
 
