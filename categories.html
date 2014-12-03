@@ -17,16 +17,23 @@
 
           <div class="form-group">
             <label for="">Icon</label>
-            <input name="icon" class="form-control" ng-model="iconName"  placeholder="Search icon here">
-          </div>
-          <div class="btn-group" role="group" aria-label="Category Type">
-            <button type="button" class="btn btn-default">Primary</button>
-            <button type="button" class="btn btn-default">Secondary</button>
-            <button type="button" class="btn btn-default">Tertiary</button>
+            <input class="form-control" ng-model="iconName"  placeholder="Search icon here">
           </div>
           <div class="form-group">
-            <label for="">New category name</label>
-            <input name="categoryName" class="form-control"  placeholder="Category Name">
+            <label for="">Category Type</label>
+            <label class="radio-inline">
+              <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> Primary
+            </label>
+            <label class="radio-inline">
+              <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"> Secondary
+            </label>
+            <label class="radio-inline">
+              <input type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3"> Tertiary
+            </label>
+          </div>
+          <div class="form-group">
+            <label for="">Category name</label>
+            <input ng-model="categoryName" class="form-control"  placeholder="Enter Category Name">
           </div>
           <button id="addNewCategory" type="submit" class="btn btn-default">Add</button>
 
