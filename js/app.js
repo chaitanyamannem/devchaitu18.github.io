@@ -53,15 +53,17 @@ var app = angular.module('syncBudget',['ngRoute','ui.bootstrap','ngTouch']);
 				$rootScope.user = info.name;
 
 			});
-
+			$rootScope.$apply();
 		};
+
+
 
 		if(client.isAuthenticated()){
 			console.log("First check client is Authenticated::");
 			console.log(client.isAuthenticated());
 
 			$rootScope.getUser();
-			
+
 
 		}
 
