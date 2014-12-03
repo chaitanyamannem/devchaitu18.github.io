@@ -3,9 +3,9 @@
       <form role="form">
       <div class="col-md-4 col-sm-4" >
 
-          <div style ="background-color: #1D9E74;">
-             
-            <span style="color: #fff; height: 280px; padding-top: 100px;" class="fa fa-{{iconName}} fa-5x"></span>
+          <div style ="color: #fff;background-color: #1D9E74;">
+             <h4>Icon Preview</h4>
+            <span style=" height: 280px; padding-top: 100px;" class="fa fa-{{iconName}} fa-5x"></span>
           </div>
 
 
@@ -18,6 +18,11 @@
           <div class="form-group">
             <label for="">Icon</label>
             <input name="icon" class="form-control" ng-model="iconName"  placeholder="Search icon here">
+          </div>
+          <div class="btn-group" role="group" aria-label="Category Type">
+            <button type="button" class="btn btn-default">Primary</button>
+            <button type="button" class="btn btn-default">Secondary</button>
+            <button type="button" class="btn btn-default">Tertiary</button>
           </div>
           <div class="form-group">
             <label for="">New category name</label>
