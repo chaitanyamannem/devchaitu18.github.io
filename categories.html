@@ -1,11 +1,12 @@
     <div style="padding-top: 70px;" ng-controller="categoryIconCarousel">
       <h2>Add New Category</h2>
+      <form role="form">
       <div class="col-md-4 col-sm-4" >
         <carousel style ="background-color: #1D9E74;" interval="myInterval">
           <slide ng-repeat="(key,value) in slides" active="slide.active">
             <div class="carousel-caption">
-              <h4>{{value}}</h4>
-            </div>
+              <h4 ng-model="currentIcon">{{value}}</h4>
+            </div> 
             <span style="color: #fff; height: 280px; padding-top: 100px;" class="fa fa-{{value}} fa-5x"></span>
 
           </slide>
@@ -14,23 +15,23 @@
       <div class="row">
         <div class="col-md-6 pull-left">
 
-          <form role="form">
+
             <div class="form-group">
               <label for="">Icon</label>
-              <input name="icon" class="form-control"  placeholder="Search icon here">
+              <input name="icon" class="form-control" ng-model={{currentIcon}}  placeholder="Search icon here">
             </div>
             <div class="form-group">
               <label for="">New category name</label>
               <input name="categoryName" class="form-control"  placeholder="Category Name">
             </div>
           <button id="addNewCategory" type="submit" class="btn btn-default">Add</button>
-          </form>
+
 
         </div>
 
       </div>
 
-
+    </form>
 
 
     </div>
