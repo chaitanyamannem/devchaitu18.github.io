@@ -9,8 +9,12 @@ var app = angular.module('syncBudget',['ngRoute','ui.bootstrap','ngTouch']);
 		$routeProvider
 
 		// route for the categories page
-		.when('/categories', {
-			templateUrl : 'categories.html'
+		.when('/addCategories', {
+			templateUrl : 'addCategories.html'
+		})
+
+		.when('/showCategories', {
+			templateUrl : 'showCategories.html'
 		})
 
 		.when('/contact', {
@@ -109,6 +113,13 @@ var app = angular.module('syncBudget',['ngRoute','ui.bootstrap','ngTouch']);
 					type : $scope.categoryType
 
 				});
+
+			};
+
+			$scope.getCategories = function(){
+				var store = $scope.datastore;
+				var categoriesTable = store.getTable('categories');
+				$scope.categories = categoriesTable.query();
 
 			};
 
