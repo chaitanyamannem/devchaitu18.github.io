@@ -52,8 +52,18 @@ var app = angular.module('syncBudget',['ngRoute','ui.bootstrap','ngTouch']);
 				$rootScope.user = info.name;
 				$rootScope.$apply();
 			});
+			var datastoreManager = client.getDatastoreManager();
+			datastoreManager.openDefaultDatastore(function (error, defaultDatastore) {
+				if (error) {
+					alert('Error opening default datastore: ' + error);
+				}
 
+				// Now you have a datastore. The next few examples can be included here.
+				$rootScope.datastore = defaultDatastore;
+			});
 		};
+
+
 
 
 
@@ -89,7 +99,18 @@ var app = angular.module('syncBudget',['ngRoute','ui.bootstrap','ngTouch']);
 
 		app.controller('categoryIconCarousel', function($scope) {
 			$scope.iconName = "glass";
-			$scope.categoryType = 1;
+			$scope.categoryType = "Primary";
+			$scope.addNewCategory = function(){
+				var store = $scope.datastore;
+				var categoriesTable = store.getTable('categories');
+				var newCategoryRecord = categoriesTable.insert({
+					name : $scope.categoryName,
+					icon : $scope.iconName,
+					type : $scope.categoryType
+
+				});
+
+			};
 
 			console.log("Entered categoryIconCarousel");
 			//$scope.myInterval = 80000;
