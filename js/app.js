@@ -51,7 +51,7 @@ var app = angular.module('syncBudget',['ngRoute','ui.bootstrap','ngTouch']);
 			client.getAccountInfo(function (error, info) {
 				$rootScope.isClientAuthenticated = true;
 				$rootScope.user = info.name;
-				$rootScope.$apply();
+
 			});
 
 		};
@@ -61,7 +61,7 @@ var app = angular.module('syncBudget',['ngRoute','ui.bootstrap','ngTouch']);
 			console.log(client.isAuthenticated());
 
 			$rootScope.getUser();
-
+			$rootScope.$apply();
 
 		}
 
@@ -73,6 +73,7 @@ var app = angular.module('syncBudget',['ngRoute','ui.bootstrap','ngTouch']);
 			if(client.isAuthenticated()){
 
 				$rootScope.getUser();
+				$rootScope.$apply();
 			}
 
 		});
