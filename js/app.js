@@ -101,6 +101,22 @@ var app = angular.module('syncBudget',['ngRoute','ui.bootstrap','ngTouch']);
 
 		});
 
+		app.controller('showCategoriesController', function($scope){
+
+			$scope.getCategories = function(){
+
+				var store = $scope.datastore;
+				console.log(store);
+				var categoriesTable = store.getTable('categories');
+				$scope.categories = categoriesTable.query({name: 'food'});
+				console.log($scope.categories);
+				console.log($scope.categories[0]);
+
+			};
+			$scope.getCategories();
+
+		});
+
 
 		app.controller('categoryIconCarousel', function($scope) {
 			$scope.iconName = "glass";
@@ -117,15 +133,7 @@ var app = angular.module('syncBudget',['ngRoute','ui.bootstrap','ngTouch']);
 
 			};
 
-			$scope.getCategories = function(){
-				var store = $scope.datastore;
-				var categoriesTable = store.getTable('categories');
-				$scope.categories = categoriesTable.query({name: 'food'});
-				console.log($scope.categories);
-				console.log($scope.categories[0]);
 
-			};
-			$scope.getCategories();
 			console.log("Entered categoryIconCarousel");
 			//$scope.myInterval = 80000;
 			var slides = $scope.slides = ["coffee",
