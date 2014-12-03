@@ -122,7 +122,7 @@ var app = angular.module('syncBudget',['ngRoute','ui.bootstrap','ngTouch']);
 				$scope.categories = categoriesTable.query();
 
 			};
-			getCategories();
+			$scope.getCategories();
 			console.log("Entered categoryIconCarousel");
 			//$scope.myInterval = 80000;
 			var slides = $scope.slides = ["coffee",
