@@ -119,7 +119,7 @@ var app = angular.module('syncBudget',['ngRoute','ui.bootstrap','ngTouch']);
 			$scope.getCategories = function(){
 				var store = $scope.datastore;
 				var categoriesTable = store.getTable('categories');
-				$scope.categories = categoriesTable.query();
+				$scope.categories = categoriesTable.query({name: 'food'});
 				console.log($scope.categories);
 				console.log($scope.categories[0]);
 
