@@ -38,7 +38,7 @@ var app = angular.module('syncBudget',['ngRoute','ui.bootstrap','ngTouch']);
 	app.run(function($rootScope) {
 
 		var APP_KEY = 'iiz72ijenjkeuw9';
-		var client = new Dropbox.Client({key: APP_KEY});
+		var client = $rootScope.myClient = new Dropbox.Client({key: APP_KEY});
 
 		$rootScope.isClientAuthenticated = false;
 
@@ -102,6 +102,17 @@ var app = angular.module('syncBudget',['ngRoute','ui.bootstrap','ngTouch']);
 		});
 
 		app.controller('showCategoriesController', function($scope){
+
+			var datastoreManager = rootScope.myClient.getDatastoreManager();
+			datastoreManager.openDefaultDatastore(function (error, defaultDatastore) {
+				if (error) {
+					alert('Error opening default datastore: ' + error);
+				}
+
+				// Now you have a datastore. The next few examples can be included here.
+				$rootScope.datastore = defaultDatastore;
+				
+			});
 
 			$scope.getCategories = function(){
 
