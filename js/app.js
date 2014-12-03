@@ -103,7 +103,7 @@ var app = angular.module('syncBudget',['ngRoute','ui.bootstrap','ngTouch']);
 
 		app.controller('showCategoriesController', function($scope){
 
-			var datastoreManager = $rootScope.myClient.getDatastoreManager();
+			var datastoreManager = $scope.myClient.getDatastoreManager();
 			datastoreManager.openDefaultDatastore(function (error, defaultDatastore) {
 				if (error) {
 					alert('Error opening default datastore: ' + error);
