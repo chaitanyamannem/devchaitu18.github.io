@@ -47,14 +47,14 @@ var app = angular.module('syncBudget',['ngRoute','ui.bootstrap','ngTouch']);
 
 		});
 
-		$rootScope.getUser = function(){
+		$rootScope.getUser(function(){
 			client.getAccountInfo(function (error, info) {
 
 				$rootScope.user = info.name;
 
 			});
 
-		};
+		});
 
 
 
