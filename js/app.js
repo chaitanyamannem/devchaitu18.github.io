@@ -60,7 +60,7 @@ var app = angular.module('syncBudget',['ngRoute','ui.bootstrap','ngTouch']);
 			console.log("First check client is Authenticated::");
 			console.log(client.isAuthenticated());
 
-			getUser();
+			$rootScope.getUser();
 
 
 		}
@@ -71,8 +71,8 @@ var app = angular.module('syncBudget',['ngRoute','ui.bootstrap','ngTouch']);
 			client.authenticate();
 			console.log("Client.autenticate called when connect to dropbox is clicked");
 			if(client.isAuthenticated()){
-				
-				getUser();
+
+				$rootScope.getUser();
 			}
 
 		});
