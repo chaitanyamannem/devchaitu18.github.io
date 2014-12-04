@@ -103,16 +103,6 @@ var app = angular.module('syncBudget',['ngRoute','ui.bootstrap','ngTouch']);
 
 		app.controller('showCategoriesController', function($scope){
 
-			var datastoreManager = $scope.myClient.getDatastoreManager();
-			datastoreManager.openDefaultDatastore(function (error, defaultDatastore) {
-				if (error) {
-					alert('Error opening default datastore: ' + error);
-				}
-
-				// Now you have a datastore. The next few examples can be included here.
-				$rootScope.datastore = defaultDatastore;
-
-			});
 
 			$scope.getCategories = function(){
 
@@ -121,7 +111,7 @@ var app = angular.module('syncBudget',['ngRoute','ui.bootstrap','ngTouch']);
 				var categoriesTable = store.getTable('categories');
 				$scope.categories = categoriesTable.query({name: 'food'});
 				console.log($scope.categories);
-				console.log($scope.categories[0]);
+				console.log($scope.categories[0].get('name'));
 
 			};
 			$scope.getCategories();
