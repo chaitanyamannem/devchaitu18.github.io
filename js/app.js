@@ -68,16 +68,7 @@ var app = angular.module('syncBudget',['ngRoute','ui.bootstrap','ngTouch']);
 			});
 		};
 
-		$rootScope.getCategories = function(){
-			console.log("Get Categories called");
-			var store = $scope.datastore;
-			console.log(store);
-			var categoriesTable = store.getTable('categories');
-			$scope.categories = categoriesTable.query({name: 'food'});
-			console.log($scope.categories);
-			console.log($scope.categories[0].get('name'));
 
-		};
 
 
 
@@ -114,7 +105,16 @@ var app = angular.module('syncBudget',['ngRoute','ui.bootstrap','ngTouch']);
 
 		app.controller('showCategoriesController', function($scope){
 
+			$scope.getCategories = function(){
+				console.log("Get Categories called");
+				var store = $scope.datastore;
+				console.log(store);
+				var categoriesTable = store.getTable('categories');
+				$scope.categories = categoriesTable.query();
+				console.log($scope.categories);
+				console.log($scope.categories[0].get('name'));
 
+			};
 
 			$scope.getCategories();
 
