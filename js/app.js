@@ -105,7 +105,7 @@ var app = angular.module('syncBudget',['ngRoute','ui.bootstrap','ngTouch']);
 
 
 			$scope.getCategories = function(){
-
+				console.log("Get Categories called");
 				var store = $scope.datastore;
 				console.log(store);
 				var categoriesTable = store.getTable('categories');
