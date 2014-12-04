@@ -147,6 +147,11 @@ var app = angular.module('syncBudget',['ngRoute','ui.bootstrap','ngTouch']);
 				$scope.opened = true;
 			};
 
+			$scope.dateOptions = {
+				formatYear: 'yy',
+				startingDay: 1
+			};
+
 			$scope.today = function() {
 				$scope.dt = new Date();
 			};
