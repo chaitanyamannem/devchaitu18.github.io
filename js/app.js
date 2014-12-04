@@ -1,5 +1,5 @@
 (function(){
-var app = angular.module('syncBudget',['ngRoute','ui.bootstrap','ngTouch']);
+var app = angular.module('syncBudget',['ngRoute','ui.bootstrap','ngTouch','decipher.tags']);
 
 	//Routing Configuration
 
@@ -125,6 +125,13 @@ var app = angular.module('syncBudget',['ngRoute','ui.bootstrap','ngTouch']);
 			};
 
 			$scope.getCategories();
+
+			baz = [
+			{foo: 'bar', value: 'baz', name: 'derp'},
+			{foo: 'spam', value: 'baz', name: 'herp'},
+			];
+
+			console.log($scope.foo); 
 
 		});
 
