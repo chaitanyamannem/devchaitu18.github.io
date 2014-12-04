@@ -17,6 +17,10 @@ var app = angular.module('syncBudget',['ngRoute','ui.bootstrap','ngTouch']);
 			templateUrl : 'showCategories.html'
 		})
 
+		.when('/addExpense', {
+			templateUrl : 'addExpense.html'
+		})
+
 		.when('/contact', {
 			templateUrl : 'contact.html'
 		})
@@ -121,7 +125,41 @@ var app = angular.module('syncBudget',['ngRoute','ui.bootstrap','ngTouch']);
 		});
 
 
-		app.controller('categoryIconCarousel', function($scope) {
+		app.conroller('addExpenseController', function($scope){
+
+			$scope.addExpense = function(){
+				console.log("Add expense called");
+				var store = $scope.datastore;
+				var expensesTable = store.getTable('expenses');
+				var newExpenseRecord = expensesTable.insert({
+					amount : $scope.expenseAmount,
+					category : $scope.expenseCategory,
+					date: $scope.expenseDate
+
+				});
+
+			};
+
+			$scope.open = function($event) {
+				$event.preventDefault();
+				$event.stopPropagation();
+
+				$scope.opened = true;
+			};
+
+			$scope.today = function() {
+				$scope.dt = new Date();
+			};
+			$scope.today();
+
+			$scope.clear = function () {
+				$scope.dt = null;
+			};
+
+
+		});
+
+		app.controller('addCategoriesController', function($scope) {
 			$scope.iconName = "glass";
 			$scope.categoryType = "Primary";
 			$scope.addNewCategory = function(){
