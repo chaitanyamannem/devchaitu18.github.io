@@ -21,6 +21,10 @@ var app = angular.module('syncBudget',['ngRoute','ui.bootstrap','ngTouch']);
 			templateUrl : 'addExpense.html'
 		})
 
+		.when('/showExpenses', {
+			templateUrl : 'showExpenses.html'
+		})
+
 		.when('/contact', {
 			templateUrl : 'contact.html'
 		})
@@ -123,6 +127,24 @@ var app = angular.module('syncBudget',['ngRoute','ui.bootstrap','ngTouch']);
 			$scope.getCategories();
 
 		});
+
+		app.controller('showExpensesController', function($scope){
+
+			$scope.getExpenses = function(){
+				console.log("Get Expenses called");
+				var store = $scope.datastore;
+				var expensesTable = store.getTable('expenses');
+				$scope.expenses = expensesTable.query();
+				console.log($scope.expenses);
+				console.log($scope.expenses[0].get('amount'));
+
+			};
+
+			$scope.getExpenses();
+
+		});
+
+
 
 
 		app.controller('addExpenseController', function($scope){

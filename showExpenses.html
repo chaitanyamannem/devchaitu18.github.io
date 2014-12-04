@@ -1,0 +1,11 @@
+<div style="padding-top: 70px;" ng-controller="showExpensesController">
+
+  <ul>
+    <li ng-repeat="expense in expenses">
+      {{expense.get('category')}}==={{expense.get('amount')}}==={{expense.get('date')}}
+
+    </li>
+  </ul>
+
+
+</div>
