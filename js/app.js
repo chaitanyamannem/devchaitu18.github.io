@@ -125,7 +125,7 @@ var app = angular.module('syncBudget',['ngRoute','ui.bootstrap','ngTouch']);
 		});
 
 
-		app.conroller('addExpenseController', function($scope){
+		app.controller('addExpenseController', function($scope){
 
 			$scope.addExpense = function(){
 				console.log("Add expense called");
