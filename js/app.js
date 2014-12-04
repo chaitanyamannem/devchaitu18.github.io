@@ -137,6 +137,7 @@ var app = angular.module('syncBudget',['ngRoute','ui.bootstrap','ngTouch']);
 					date: $scope.dt
 
 				});
+				console.log($scope.dt);
 
 			};
 
@@ -156,7 +157,7 @@ var app = angular.module('syncBudget',['ngRoute','ui.bootstrap','ngTouch']);
 				$scope.dt = new Date().toDateString();
 			};
 			$scope.today();
-			$scope.$apply();
+
 			$scope.clear = function () {
 				$scope.dt = null;
 			};
