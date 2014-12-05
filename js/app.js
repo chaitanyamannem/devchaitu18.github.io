@@ -1,5 +1,5 @@
 (function(){
-var app = angular.module('syncBudget',['ngRoute','ui.bootstrap','ngTouch','decipher.tags']);
+var app = angular.module('syncBudget',['ngRoute','ui.bootstrap','ngTouch','ui.select']);
 
 	//Routing Configuration
 
@@ -126,12 +126,7 @@ var app = angular.module('syncBudget',['ngRoute','ui.bootstrap','ngTouch','decip
 
 			$scope.getCategories();
 
-			$scope.baz = [
-			{value: 'baz', name: 'derp'},
-			{value: 'baz', name: 'herp'},
-			];
-
-			console.log($scope.foo);
+			$scope.myTags = ["dinner","date","driving","danger"];
 
 		});
 
