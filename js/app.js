@@ -126,12 +126,12 @@ var app = angular.module('syncBudget',['ngRoute','ui.bootstrap','ngTouch','decip
 
 			$scope.getCategories();
 
-			baz = [
+			$scope.baz = [
 			{foo: 'bar', value: 'baz', name: 'derp'},
 			{foo: 'spam', value: 'baz', name: 'herp'},
 			];
 
-			console.log($scope.foo); 
+			console.log($scope.foo);
 
 		});
 
