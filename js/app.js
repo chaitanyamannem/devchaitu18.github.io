@@ -117,7 +117,7 @@ var app = angular.module('syncBudget',['ngRoute','ui.bootstrap','ngTouch','ui.se
 
 		app.controller('showCategoriesController', function($scope){
 
-			$(".tm-input").tagsManager();
+			
 
 			$scope.getCategories = function(){
 				console.log("Get Categories called");
@@ -162,7 +162,7 @@ var app = angular.module('syncBudget',['ngRoute','ui.bootstrap','ngTouch','ui.se
 				availableTags: [ 'C', 'C++', 'C#', 'Java', 'Perl', 'PHP', 'Python' ],
 				autocomplete: true
 			});
-			
+
 
 			$scope.addExpense = function(){
 				console.log("Add expense called");
