@@ -157,13 +157,16 @@ var app = angular.module('syncBudget',['ngRoute','ui.bootstrap','ngTouch']);
 
 		app.controller('addExpenseController', function($scope){
 
+			var userAddedTags = $scope.thisExpenseTags = {};
+
 			$("#expense_tag_handler").tagHandler({
 				assignedTags: [ 'C', 'Perl', 'PHP' ],
 				availableTags: [ 'C', 'C++', 'C#', 'Java', 'Perl', 'PHP', 'Python' ],
+				updateData : userAddedTags,
 				autocomplete: true
 			});
 
-			$scope.thisExpenseTags = [];
+
 
 
 			$scope.addExpense = function(){
