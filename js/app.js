@@ -1,6 +1,11 @@
 (function(){
 var app = angular.module('syncBudget',['ngRoute','ui.bootstrap','ngTouch','ui.select']);
 
+	app.config(function(uiSelectConfig) {
+		uiSelectConfig.theme = 'bootstrap';
+		uiSelectConfig.resetSearchInput = true;
+	});
+
 	//Routing Configuration
 
 	app.config(function($routeProvider) {
