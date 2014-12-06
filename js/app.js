@@ -1,5 +1,5 @@
 (function(){
-var app = angular.module('syncBudget',['ngRoute','ui.bootstrap','ngTouch','ui.select']);
+var app = angular.module('syncBudget',['ngRoute','ui.bootstrap','ngTouch']);
 
 
 
@@ -117,7 +117,7 @@ var app = angular.module('syncBudget',['ngRoute','ui.bootstrap','ngTouch','ui.se
 
 		app.controller('showCategoriesController', function($scope){
 
-			
+
 
 			$scope.getCategories = function(){
 				console.log("Get Categories called");
