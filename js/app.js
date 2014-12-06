@@ -1,7 +1,7 @@
 (function(){
 var app = angular.module('syncBudget',['ngRoute','ui.bootstrap','ngTouch','ui.select']);
 
-	
+
 
 	//Routing Configuration
 
@@ -61,6 +61,8 @@ var app = angular.module('syncBudget',['ngRoute','ui.bootstrap','ngTouch','ui.se
 
 		});
 
+
+
 		$rootScope.getUser = function(){
 			client.getAccountInfo(function (error, info) {
 				$rootScope.user = info.name;
@@ -115,6 +117,8 @@ var app = angular.module('syncBudget',['ngRoute','ui.bootstrap','ngTouch','ui.se
 
 		app.controller('showCategoriesController', function($scope){
 
+			$(".tm-input").tagsManager();
+
 			$scope.getCategories = function(){
 				console.log("Get Categories called");
 				var store = $scope.datastore;
@@ -152,6 +156,13 @@ var app = angular.module('syncBudget',['ngRoute','ui.bootstrap','ngTouch','ui.se
 
 
 		app.controller('addExpenseController', function($scope){
+
+			$("#array_tag_handler").tagHandler({
+				assignedTags: [ 'C', 'Perl', 'PHP' ],
+				availableTags: [ 'C', 'C++', 'C#', 'Java', 'Perl', 'PHP', 'Python' ],
+				autocomplete: true
+			});
+			
 
 			$scope.addExpense = function(){
 				console.log("Add expense called");
