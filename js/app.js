@@ -163,6 +163,8 @@ var app = angular.module('syncBudget',['ngRoute','ui.bootstrap','ngTouch']);
 				autocomplete: true
 			});
 
+			$scope.thisExpenseTags = [];
+
 
 			$scope.addExpense = function(){
 				console.log("Add expense called");
