@@ -1,10 +1,7 @@
 (function(){
 var app = angular.module('syncBudget',['ngRoute','ui.bootstrap','ngTouch','ui.select']);
 
-	app.config(function(uiSelectConfig) {
-		uiSelectConfig.theme = 'bootstrap';
-		uiSelectConfig.resetSearchInput = true;
-	});
+	
 
 	//Routing Configuration
 
@@ -131,8 +128,7 @@ var app = angular.module('syncBudget',['ngRoute','ui.bootstrap','ngTouch','ui.se
 
 			$scope.getCategories();
 
-			$scope.allTags = ["dinner","date","driving","danger"];
-			$scope.myTags = undefined;
+
 
 		});
 
