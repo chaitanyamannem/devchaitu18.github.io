@@ -132,7 +132,7 @@ var app = angular.module('syncBudget',['ngRoute','ui.bootstrap','ngTouch','ui.se
 			$scope.getCategories();
 
 			$scope.allTags = ["dinner","date","driving","danger"];
-			$scope.myTags = [];
+			$scope.myTags = undefined;
 
 		});
 
