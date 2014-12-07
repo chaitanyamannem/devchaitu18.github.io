@@ -163,7 +163,7 @@ var app = angular.module('syncBudget',['ngRoute','ui.bootstrap','ngTouch']);
 
 			$("#expense_tag_handler").tagHandler({
 				assignedTags: [],
-				availableTags: $scope.tags,
+				availableTags: $scope.allTags,
 				onAdd: function(tag) {$scope.thisExpenseTags.push(tag);$scope.$apply();console.log($scope.thisExpenseTags);},
 				onDelete: function(tag) {$scope.thisExpenseTags.pop(tag);$scope.$apply();},
 				autocomplete: true
@@ -189,10 +189,14 @@ var app = angular.module('syncBudget',['ngRoute','ui.bootstrap','ngTouch']);
 				// Add new tags to tags table
 				var tagsTable = store.getTable('tags');
 				$scope.newTags = _.difference($scope.thisExpenseTags, $scope.allTags);
+				console.log("New Tags");ß
 				console.log($scope.newTags);
-				/*tagsTable.insert({
-					name
-				});*/
+				for each (var tag in $scope.newTags) {
+					tagsTable.insert({
+					name: tag
+				});
+				}
+
 
 			};
 
