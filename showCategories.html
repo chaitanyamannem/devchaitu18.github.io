@@ -7,12 +7,4 @@
     </li>
   </ul>
 
-  <ui-select multiple tagging tagging-label="(new tag)"  ng-model="myTags" theme="bootstrap"  >
-    <ui-select-match placeholder="Select tags...">{{$item}}</ui-select-match>
-    <ui-select-choices repeat="tag in allTags | filter:$select.search">
-      {{tag}}
-    </ui-select-choices>
-  </ui-select>
-  <p>Selected: {{myTags}}</p>
-
 </div>
