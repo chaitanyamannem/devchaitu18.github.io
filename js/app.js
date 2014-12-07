@@ -105,13 +105,9 @@ var app = angular.module('syncBudget',['ngRoute','ui.bootstrap','ngTouch']);
 			if(client.isAuthenticated()){
 				$rootScope.isClientAuthenticated = true;
 				$rootScope.getUser();
-
-
 			}
 
 		});
-
-
 
 		});
 
@@ -158,9 +154,9 @@ var app = angular.module('syncBudget',['ngRoute','ui.bootstrap','ngTouch']);
 		app.controller('addExpenseController', function($scope){
 
 			$scope.thisExpenseTags = [];
-			$scope.allTags = $scope.datastore.getTable('tags').query('name');
+			$scope.allTags = $scope.datastore.getTable('tags').query();
 			console.log("All Tags")
-			console.log($scope.allTags);
+			console.log($scope.allTags.get('name'));
 
 			$("#expense_tag_handler").tagHandler({
 				availableTags: $scope.allTags,
