@@ -76,7 +76,6 @@ var app = angular.module('syncBudget',['ngRoute','ui.bootstrap','ngTouch']);
 
 				// Now you have a datastore. The next few examples can be included here.
 				$rootScope.datastore = defaultDatastore;
-				$rootScope.allTags = defaultDatastore.getTable('tags').query();
 				$rootScope.$apply();
 			});
 		};
@@ -159,10 +158,10 @@ var app = angular.module('syncBudget',['ngRoute','ui.bootstrap','ngTouch']);
 		app.controller('addExpenseController', function($scope){
 
 			$scope.thisExpenseTags = [];
-
+			$scope.allTags = defaultDatastore.getTable('tags').query('name');
+			console.log($scope.allTags);
 
 			$("#expense_tag_handler").tagHandler({
-				assignedTags: [],
 				availableTags: $scope.allTags,
 				onAdd: function(tag) {$scope.thisExpenseTags.push(tag);$scope.$apply();console.log($scope.thisExpenseTags);},
 				onDelete: function(tag) {$scope.thisExpenseTags.pop(tag);$scope.$apply();},
