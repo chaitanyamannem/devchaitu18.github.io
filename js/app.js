@@ -76,6 +76,7 @@ var app = angular.module('syncBudget',['ngRoute','ui.bootstrap','ngTouch']);
 
 				// Now you have a datastore. The next few examples can be included here.
 				$rootScope.datastore = defaultDatastore;
+				$rootScope.allTags = defaultDatastore.getTable('tags').query();
 				$rootScope.$apply();
 			});
 		};
@@ -159,9 +160,10 @@ var app = angular.module('syncBudget',['ngRoute','ui.bootstrap','ngTouch']);
 
 			$scope.thisExpenseTags = [];
 
+
 			$("#expense_tag_handler").tagHandler({
 				assignedTags: [],
-				availableTags: [ 'C', 'C++', 'C#', 'Java', 'Perl', 'PHP', 'Python' ],
+				availableTags: $scope.tags,
 				onAdd: function(tag) {$scope.thisExpenseTags.push(tag);$scope.$apply();console.log($scope.thisExpenseTags);},
 				onDelete: function(tag) {$scope.thisExpenseTags.pop(tag);$scope.$apply();},
 				autocomplete: true
@@ -174,6 +176,7 @@ var app = angular.module('syncBudget',['ngRoute','ui.bootstrap','ngTouch']);
 				console.log("Add expense called");
 				var store = $scope.datastore;
 				var expensesTable = store.getTable('expenses');
+				// Add expense to expenses table
 				var newExpenseRecord = expensesTable.insert({
 					amount : $scope.expenseAmount,
 					category : $scope.expenseCategory,
@@ -183,7 +186,13 @@ var app = angular.module('syncBudget',['ngRoute','ui.bootstrap','ngTouch']);
 					tags: $scope.thisExpenseTags
 
 				});
-				console.log($scope.dt);
+				// Add new tags to tags table
+				var tagsTable = store.getTable('tags');
+				$scope.newTags = _.difference($scope.thisExpenseTags, $scope.allTags);
+				console.log($scope.newTags);
+				/*tagsTable.insert({
+					name
+				});*/
 
 			};
 
