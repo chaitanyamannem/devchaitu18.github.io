@@ -189,7 +189,7 @@ var app = angular.module('syncBudget',['ngRoute','ui.bootstrap','ngTouch']);
 				// Add new tags to tags table
 				var tagsTable = store.getTable('tags');
 				$scope.newTags = _.difference($scope.thisExpenseTags, $scope.allTags);
-				console.log("New Tags");ß
+				console.log("New Tags");
 				console.log($scope.newTags);
 				for (var newTag in $scope.newTags) {
 					tagsTable.insert({
