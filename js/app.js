@@ -15,12 +15,16 @@ var app = angular.module('syncBudget',['ngRoute','ui.bootstrap','ngTouch']);
 			templateUrl : 'addCategories.html'
 		})
 
+		.when('/addExpense', {
+			templateUrl : 'addExpense.html'
+		})
+
 		.when('/showCategories', {
 			templateUrl : 'showCategories.html'
 		})
 
-		.when('/addExpense', {
-			templateUrl : 'addExpense.html'
+		.when('/showGraphs', {
+			templateUrl : 'showGraphs.html'
 		})
 
 		.when('/showExpenses', {
@@ -145,31 +149,34 @@ var app = angular.module('syncBudget',['ngRoute','ui.bootstrap','ngTouch']);
 			};
 
 			$scope.getExpenses();
+			var expensesChartData = [];
 
+			for(var i = 0; i < $scope.expenses.length; i++ ){
+				expensesChartData[i].x = $scope.expenses[0].get('date');
+				expensesChartData[i].y = $scope.expenses[0].get('amount');
+			}
+			console.log("expensesChartData");
+			console.log(expensesChartData);
 
 			//Show Chart
-			$('#sampleChart').highcharts({
+			$('#dailyChart').highcharts({
 				chart: {
-					type: 'bar'
+					type: 'column'
 				},
 				title: {
-					text: 'Fruit Consumption'
+					text: 'Your Expenses Summary'
 				},
 				xAxis: {
-					categories: ['Apples', 'Bananas', 'Oranges']
+					title:{
+						text: Days
+					}
 				},
 				yAxis: {
 					title: {
-						text: 'Fruit eaten'
+						text: 'Amount'
 					}
 				},
-				series: [{
-					name: 'Jane',
-					data: [1, 0, 4]
-				}, {
-					name: 'John',
-					data: [5, 7, 3]
-				}]
+				series: expensesChartData
 			});
 
 		});
