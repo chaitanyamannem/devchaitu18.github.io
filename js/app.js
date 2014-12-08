@@ -143,20 +143,20 @@ var app = angular.module('syncBudget',['ngRoute','ui.bootstrap','ngTouch']);
 				var store = $scope.datastore;
 				var expensesTable = store.getTable('expenses');
 				$scope.expenses = expensesTable.query();
-				console.log($scope.expenses);
-				console.log($scope.expenses[0].get('amount'));
+				console.log("expenses Array by day");
+				console.log(expensesTable.query({date: 7,month: 12}));
 
 			};
 
 			$scope.getExpenses();
 			var expensesChartData = [];
 
-			for(var i = 0; i < $scope.expenses.length; i++ ){
+			/*for(var i = 0; i < $scope.expenses.length; i++ ){
 				var expenseChartElement = {}
-				expenseChartElement.x = $scope.expenses[0].get('date');
-				expenseChartElement.y = Number($scope.expenses[0].get('amount'));
+				expenseChartElement.date = $scope.expenses[0].get('date');
+				expenseChartElement.amount = Number($scope.expenses[0].get('amount'));
 				expensesChartData.push(expenseChartElement);
-			}
+			}*/
 			console.log("expensesChartData");
 			console.log(expensesChartData);
 
@@ -173,7 +173,9 @@ var app = angular.module('syncBudget',['ngRoute','ui.bootstrap','ngTouch']);
 						text: 'Amount'
 					}
 				},
-				series: expensesChartData
+				series: [{
+					data: [1,5]
+				}]
 			});
 
 		});
