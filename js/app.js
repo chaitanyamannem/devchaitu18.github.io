@@ -159,11 +159,11 @@ var app = angular.module('syncBudget',['ngRoute','ui.bootstrap','ngTouch']);
 			var queryYear = 2014;
 			var expensesForMonth = function(queryMonth,queryYear){
 
-			return $scope.dataStore.getTable('expenses').query({month : queryMonth, year : queryYear });
+			return $scope.datastore.getTable('expenses').query({month : queryMonth, year : queryYear });
 			}
 			var expensesForDay = function(queryDate,queryMonth,queryYear){
 
-			return $scope.dataStore.getTable('expenses').query({date: queryDate, month : queryMonth, year : queryYear });
+			return $scope.datastore.getTable('expenses').query({date: queryDate, month : queryMonth, year : queryYear });
 
 			}
 			var chartYValues = [];
