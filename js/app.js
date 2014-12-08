@@ -143,22 +143,47 @@ var app = angular.module('syncBudget',['ngRoute','ui.bootstrap','ngTouch']);
 				var store = $scope.datastore;
 				var expensesTable = store.getTable('expenses');
 				$scope.expenses = expensesTable.query();
-				console.log("expenses Array by day");
-				console.log(expensesTable.query({date: 7,month: 11}));
+
+
 
 			};
 
 			$scope.getExpenses();
-			var expensesChartData = [];
 
-			/*for(var i = 0; i < $scope.expenses.length; i++ ){
-				var expenseChartElement = {}
-				expenseChartElement.date = $scope.expenses[0].get('date');
-				expenseChartElement.amount = Number($scope.expenses[0].get('amount'));
-				expensesChartData.push(expenseChartElement);
-			}*/
-			console.log("expensesChartData");
-			console.log(expensesChartData);
+		});
+
+
+		app.controller('showGraphsController', function($scope){
+
+			var queryMonth = 11;
+			var queryYear = 2014;
+			var expensesForMonth = function(queryMonth,queryYear){
+
+			return $scope.dataStore.getTable('expenses').query({month : queryMonth, year : queryYear });
+			}
+			var expensesForDay = function(queryDate,queryMonth,queryYear){
+
+			return $scope.dataStore.getTable('expenses').query({date: queryDate, month : queryMonth, year : queryYear });
+
+			}
+			var chartYValues = [];
+			var chartXValues = [];
+
+			//Populate
+			for(var i=1; i < 31; i++){
+				var amount = 0;
+				var dailyExpenses = expensesForDay(i,queryMonth,queryYear);
+				for(var j=0; j < dailyExpenses.length; j++){
+					amount += dailyExpenses[j].get('amount');
+
+				}
+				chartXValues.push(i);
+				chartYValues.push(y);
+
+
+			}
+
+
 
 			//Show Chart
 			$('#dailyChart').highcharts({
@@ -168,19 +193,20 @@ var app = angular.module('syncBudget',['ngRoute','ui.bootstrap','ngTouch']);
 				title: {
 					text: 'Your Expenses Summary'
 				},
+				xAxis: {
+					categories: chartXValues
+				},
 				yAxis: {
 					title: {
 						text: 'Amount'
 					}
 				},
 				series: [{
-					data: [1,5]
+					data: chartYValues
 				}]
 			});
 
 		});
-
-
 
 
 		app.controller('addExpenseController', function($scope){
