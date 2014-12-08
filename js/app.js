@@ -154,7 +154,7 @@ var app = angular.module('syncBudget',['ngRoute','ui.bootstrap','ngTouch']);
 			for(var i = 0; i < $scope.expenses.length; i++ ){
 				var expenseChartElement = {}
 				expenseChartElement.x = $scope.expenses[0].get('date');
-				expenseChartElement.y = $scope.expenses[0].get('amount');
+				expenseChartElement.y = Number('$scope.expenses[0].get('amount')');
 				expensesChartData.push(expenseChartElement);
 			}
 			console.log("expensesChartData");
