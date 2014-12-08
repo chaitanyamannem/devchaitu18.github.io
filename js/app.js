@@ -178,7 +178,7 @@ var app = angular.module('syncBudget',['ngRoute','ui.bootstrap','ngTouch']);
 
 				}
 				chartXValues.push(i);
-				chartYValues.push(y);
+				chartYValues.push(amount);
 
 
 			}
