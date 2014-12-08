@@ -114,7 +114,7 @@ var app = angular.module('syncBudget',['ngRoute','ui.bootstrap','ngTouch']);
 		});
 
 		});
-
+		/*----------------------------------------------------------*/
 		app.controller('showCategoriesController', function($scope){
 
 
@@ -135,7 +135,7 @@ var app = angular.module('syncBudget',['ngRoute','ui.bootstrap','ngTouch']);
 
 
 		});
-
+		/*----------------------------------------------------------*/
 		app.controller('showExpensesController', function($scope){
 
 			$scope.getExpenses = function(){
@@ -152,7 +152,7 @@ var app = angular.module('syncBudget',['ngRoute','ui.bootstrap','ngTouch']);
 
 		});
 
-
+		/*----------------------------------------------------------*/
 		app.controller('showGraphsController', function($scope){
 
 			var queryMonth = 11;
@@ -211,7 +211,7 @@ var app = angular.module('syncBudget',['ngRoute','ui.bootstrap','ngTouch']);
 
 		});
 
-
+		/*----------------------------------------------------------*/
 		app.controller('addExpenseController', function($scope){
 
 			$scope.thisExpenseTags = [];
@@ -285,7 +285,7 @@ var app = angular.module('syncBudget',['ngRoute','ui.bootstrap','ngTouch']);
 
 
 		});
-
+		/*----------------------------------------------------------*/
 		app.controller('addCategoriesController', function($scope) {
 			$scope.iconName = "glass";
 			$scope.categoryType = "Primary";
@@ -301,9 +301,6 @@ var app = angular.module('syncBudget',['ngRoute','ui.bootstrap','ngTouch']);
 
 			};
 
-
-			console.log("Entered categoryIconCarousel");
-			//$scope.myInterval = 80000;
 			var slides = $scope.slides = ["coffee",
 			"credit-card",
 			"cut",
@@ -332,38 +329,7 @@ var app = angular.module('syncBudget',['ngRoute','ui.bootstrap','ngTouch']);
 			"cutlery",
 			"cog",
 			"briefcase"
-
-
-
 			];
-
-
-
 		});
-
-
-
-	/*app.controller('SyncDropBox', function($scope){
-
-		console.log("Rootscope::");
-		console.log($scope.client);
-
-		//console.log("client authenticated");
-				/*var datastoreManager = $rootScope.client.getDatastoreManager();
-				datastoreManager.openDefaultDatastore(function (error, datastore) {
-					if (error) {
-						alert('Error opening default datastore: ' + error);
-					}
-				 $rootScope.userDatastore = datastore;
-				 var testExpensesTable = datastore.getTable('testExpensesTable');
-		    	 console.log("testExpensesTable ::::")
-		    	 console.log(testExpensesTable);
-
-
-
-	});*/
-
-
-
-
+		/*----------------------------------------------------------*/
 })();
