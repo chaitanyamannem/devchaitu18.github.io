@@ -40,6 +40,10 @@ var app = angular.module('syncBudget',['ngRoute','ui.bootstrap','ngTouch']);
 			templateUrl : 'blog.html'
 		})
 
+		.when('reset', {
+			templateUrl : 'reset.html'
+		})
+
 		.when('/home', {
 			templateUrl : 'addExpense.html'
 		});
@@ -285,6 +289,21 @@ var app = angular.module('syncBudget',['ngRoute','ui.bootstrap','ngTouch']);
 
 
 		});
+		/*----------------------------------------------------------*/
+		app.controller('resetController', function($scope) {
+			var deleteData = function(){
+				$scope.myClient.getDatastoreManager().deleteDatastore.($scope.datastore.getId, function (error) {
+					if (error) {
+						alert('Sorry please try after sometime error: ' + error);
+					} else {
+						alert('Success, your data is gone');
+					}
+
+				});
+			};
+
+		});
+
 		/*----------------------------------------------------------*/
 		app.controller('addCategoriesController', function($scope) {
 			$scope.iconName = "glass";
