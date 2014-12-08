@@ -291,7 +291,7 @@ var app = angular.module('syncBudget',['ngRoute','ui.bootstrap','ngTouch']);
 		});
 		/*----------------------------------------------------------*/
 		app.controller('resetController', function($scope) {
-			var deleteData = function(){
+			$scope.deleteData = function(){
 				$scope.myClient.getDatastoreManager().deleteDatastore($scope.datastore.getId, function (error) {
 					if (error) {
 						alert('Sorry please try after sometime error: ' + error);
