@@ -170,19 +170,22 @@ var app = angular.module('syncBudget',['ngRoute','ui.bootstrap','ngTouch']);
 			var chartXValues = [];
 
 			//Populate
-			for(var i=1; i < 31; i++){
+			for(var i=1; i <= 31; i++){
 				var amount = 0;
 				var dailyExpenses = expensesForDay(i,queryMonth,queryYear);
 				for(var j=0; j < dailyExpenses.length; j++){
-					amount += dailyExpenses[j].get('amount');
+					amount += Number(dailyExpenses[j].get('amount'));
 
 				}
 				chartXValues.push(i);
 				chartYValues.push(amount);
+				console.log(amount);
 
 
 			}
-
+			console.log(expensesForDay);
+			console.log("Y Values");
+			console.log(chartYValues);
 
 
 			//Show Chart
