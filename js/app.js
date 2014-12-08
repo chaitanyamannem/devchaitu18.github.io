@@ -168,11 +168,6 @@ var app = angular.module('syncBudget',['ngRoute','ui.bootstrap','ngTouch']);
 				title: {
 					text: 'Your Expenses Summary'
 				},
-				xAxis: {
-					title:{
-						text: Days
-					}
-				},
 				yAxis: {
 					title: {
 						text: 'Amount'
