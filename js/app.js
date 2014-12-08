@@ -40,7 +40,7 @@ var app = angular.module('syncBudget',['ngRoute','ui.bootstrap','ngTouch']);
 			templateUrl : 'blog.html'
 		})
 
-		.when('reset', {
+		.when('/reset', {
 			templateUrl : 'reset.html'
 		})
 
