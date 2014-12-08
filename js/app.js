@@ -144,7 +144,7 @@ var app = angular.module('syncBudget',['ngRoute','ui.bootstrap','ngTouch']);
 				var expensesTable = store.getTable('expenses');
 				$scope.expenses = expensesTable.query();
 				console.log("expenses Array by day");
-				console.log(expensesTable.query({date: 7,month: 12}));
+				console.log(expensesTable.query({date: 7,month: 11}));
 
 			};
 
