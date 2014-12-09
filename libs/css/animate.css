@@ -1,7 +1,7 @@
 /* when hiding the thing */
 .ng-hide-add         {
   -webkit-animation:0.5s lightSpeedOut ease;
-  animation:0.5s lightSpeedOut ease;
+  animation:0.5s flipInX ease;
 }
 
 /* when showing the thing */
