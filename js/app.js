@@ -46,7 +46,7 @@ var app = angular.module('syncBudget',['ngRoute','ui.bootstrap','ngTouch']);
 
 		.when('/home', {
 			templateUrl : 'addExpense.html',
-			controller: 'addExpenseController'
+			controller: 'addExpenseController',
 			resolve: {
 				app: function($q, $timeout) {
 					var defer = $q.defer;
