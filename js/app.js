@@ -1,5 +1,5 @@
 (function(){
-var app = angular.module('syncBudget',['ngRoute','ui.bootstrap','ngTouch']);
+var app = angular.module('syncBudget',['ngRoute','ui.bootstrap','ngTouch','ngAnimate']);
 
 
 
