@@ -1,5 +1,12 @@
 .ui-autocomplete {
-  background-color: #1D9E74;
+  background-color: #fff;
+  border: 1px solid rgba(0,0,0,.15);
+  list-style: outside none none;
+  width: 25%;
+}
+
+.ui-autocomplete li a:hover {
+  back-ground-color:#428bca;
 }
 
 .tagHandler {
