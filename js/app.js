@@ -236,7 +236,7 @@ var app = angular.module('syncBudget',['ngRoute','ui.bootstrap','ngTouch']);
 		});
 
 		/*----------------------------------------------------------*/
-		app.controller('addExpenseController', function($scope){
+		app.controller('addExpenseController', function($scope,$timeout){
 			$scope.isExpenseAdded = false;
 			$scope.thisExpenseTags = [];
 			$scope.allTags = [];
