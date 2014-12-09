@@ -318,7 +318,10 @@ var app = angular.module('syncBudget',['ngRoute','ui.bootstrap','ngTouch','ngAni
 
 
 		});
-		
+		/*----------------------------------------------------------*/
+		app.controller('welcomeController', function($scope){
+
+		});
 		/*----------------------------------------------------------*/
 		app.controller('resetController', function($scope) {
 			$scope.deleteData = function(){
