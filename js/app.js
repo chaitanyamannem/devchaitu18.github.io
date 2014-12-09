@@ -154,8 +154,6 @@ var app = angular.module('syncBudget',['ngRoute','ui.bootstrap','ngTouch','ngAni
 				var categoriesTable = store.getTable('categories');
 				$scope.categories = categoriesTable.query();
 				console.log($scope.categories);
-				
-
 			};
 
 			$scope.getCategories();
