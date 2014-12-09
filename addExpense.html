@@ -1,5 +1,5 @@
 <div ng-controller="addExpenseController">
-
+  <div ng-show="isExpenseAdded" class="alert alert-success" role="alert">Success, your expense is saved</div>
   <form ng-show="{{isClientAuthenticated}}"  role="form">
         <div class="form-group">
           <label for="">Amount</label>

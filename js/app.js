@@ -237,7 +237,7 @@ var app = angular.module('syncBudget',['ngRoute','ui.bootstrap','ngTouch']);
 
 		/*----------------------------------------------------------*/
 		app.controller('addExpenseController', function($scope){
-
+			$scope.isExpenseAdded = false;
 			$scope.thisExpenseTags = [];
 			$scope.allTags = [];
 			var tagsRecords = $scope.datastore.getTable('tags').query();
@@ -282,7 +282,7 @@ var app = angular.module('syncBudget',['ngRoute','ui.bootstrap','ngTouch']);
 					name: insertTags[i]
 				});
 				}
-
+				$scope.isExpenseAdded = true;
 
 			};
 
