@@ -286,7 +286,7 @@ var app = angular.module('syncBudget',['ngRoute','ui.bootstrap','ngTouch','ngAni
 				$timeout(function(){
 					$scope.isExpenseAdded = false;
 					$scope.$apply();
-				},1000);
+				},2000);
 
 
 			};
