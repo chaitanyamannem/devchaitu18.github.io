@@ -60,6 +60,14 @@ var app = angular.module('syncBudget',['ngRoute','ui.bootstrap','ngTouch']);
 
 		$rootScope.isClientAuthenticated = false;
 
+		if(client.isAuthenticated()){
+			console.log("First check client is Authenticated::");
+			console.log(client.isAuthenticated());
+			$rootScope.isClientAuthenticated = true;
+			$rootScope.getUser();
+
+		}
+
 
 		// Try to finish OAuth authorization.
 		client.authenticate({interactive: false}, function (error) {
@@ -94,16 +102,7 @@ var app = angular.module('syncBudget',['ngRoute','ui.bootstrap','ngTouch']);
 
 
 
-		if(client.isAuthenticated()){
-			console.log("First check client is Authenticated::");
-			console.log(client.isAuthenticated());
-			$rootScope.isClientAuthenticated = true;
 
-			$rootScope.getUser();
-
-
-
-		}
 
 		// Authenticate when the user clicks the connect button.
 		$('#connectDropbox').click(function (e) {
@@ -118,7 +117,7 @@ var app = angular.module('syncBudget',['ngRoute','ui.bootstrap','ngTouch']);
 		});
 
 		});
-		/*----------------------------------------------------------*/
+		/*--------------------Controllers Start--------------------------------------*/
 		app.controller('showCategoriesController', function($scope){
 
 
@@ -224,7 +223,8 @@ var app = angular.module('syncBudget',['ngRoute','ui.bootstrap','ngTouch']);
 			for (var i=0; i < tagsRecords.length; i++) {
 				$scope.allTags.push(tagsRecords[i].get('name'));
 			}
-			console.log("All Tags")
+			console.log("All Tags");
+			console.log($scope.allTags);
 
 
 			$("#expense_tag_handler").tagHandler({
