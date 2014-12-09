@@ -9,6 +9,14 @@
   back-ground-color:#428bca;
 }
 
+.ui-autocomplete li a:hover {
+  color:#fff;
+}
+
+.ui-autocomplete li a:link {
+  text-decoration: none;
+}
+
 .tagHandler {
     width: 100%;
     position: relative;
