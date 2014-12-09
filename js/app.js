@@ -16,7 +16,17 @@ var app = angular.module('syncBudget',['ngRoute','ui.bootstrap','ngTouch']);
 		})
 
 		.when('/addExpense', {
-			templateUrl : 'addExpense.html'
+			templateUrl : 'addExpense.html',
+			controller: 'addExpenseController',
+			resolve: {
+				app: function($q, $timeout) {
+					var defer = $q.defer();
+					$timeout(function(){
+						defer.resolve();
+					},2000);
+					return defer.promise;
+				}
+			}
 		})
 
 		.when('/showCategories', {
