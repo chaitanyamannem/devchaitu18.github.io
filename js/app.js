@@ -10,6 +10,11 @@ var app = angular.module('syncBudget',['ngRoute','ui.bootstrap','ngTouch','ngAni
 
 		$routeProvider
 
+		.when('/',{
+			templateUrl : 'welcome.html',
+			controller : 'welcomeController'
+		})
+
 		// route for the categories page
 		.when('/addCategories', {
 			templateUrl : 'addCategories.html'
@@ -79,7 +84,6 @@ var app = angular.module('syncBudget',['ngRoute','ui.bootstrap','ngTouch','ngAni
 		var client = $rootScope.myClient = new Dropbox.Client({key: APP_KEY});
 
 		$rootScope.isClientAuthenticated = false;
-
 
 		// Try to finish OAuth authorization.
 		client.authenticate({interactive: false}, function (error) {
