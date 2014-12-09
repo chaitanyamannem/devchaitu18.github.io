@@ -52,7 +52,7 @@ var app = angular.module('syncBudget',['ngRoute','ui.bootstrap','ngTouch']);
 					var defer = $q.defer();
 					$timeout(function(){
 						defer.resolve();
-					},1000);
+					},2000);
 					return defer.promise;
 				}
 			}
