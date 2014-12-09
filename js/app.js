@@ -283,6 +283,10 @@ var app = angular.module('syncBudget',['ngRoute','ui.bootstrap','ngTouch']);
 				});
 				}
 				$scope.isExpenseAdded = true;
+				$timeout(function(){
+					$scope.isExpenseAdded = false;
+				},2000);
+
 
 			};
 
