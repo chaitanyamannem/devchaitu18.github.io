@@ -219,7 +219,24 @@ var app = angular.module('syncBudget',['ngRoute','ui.bootstrap','ngTouch','ngAni
 				autocomplete: true
 			});
 
-			$scope.ok = function () {
+			$scope.saveEditExpense = function () {
+				if($scope.currentExpense.get('amount') != $scope.editExpenseAmount){
+					$scope.currentExpense.set('amount',$scope.editExpenseAmount);
+				}
+				if($scope.currentExpense.get('category') != $scope.editExpenseCategory){
+					$scope.currentExpense.set('category',$scope.editExpenseCategory);
+				}
+				//Edit Date
+				if($scope.currentExpense.get('date') != $scope.dt.getDate()){
+					$scope.currentExpense.set('date',$scope.dt.getDate());
+				}
+				if($scope.currentExpense.get('month') != $scope.dt.getMonth()){
+					$scope.currentExpense.set('month',$scope.dt.getMonth());
+				}
+				if($scope.currentExpense.get('year') != $scope.dt.getFullYear()){
+					$scope.currentExpense.set('year',$scope.dt.getFullYear());
+				}
+
 				$modalInstance.close();
 			};
 
