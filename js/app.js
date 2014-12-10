@@ -43,7 +43,17 @@ var app = angular.module('syncBudget',['ngRoute','ui.bootstrap','ngTouch','ngAni
 		})
 
 		.when('/showExpenses', {
-			templateUrl : 'showExpenses.html'
+			templateUrl : 'showExpenses.html',
+			controller: 'showExpensesController',
+			resolve: {
+				app: function($q, $timeout) {
+					var defer = $q.defer();
+					$timeout(function(){
+						defer.resolve();
+					},2000);
+					return defer.promise;
+				}
+			}
 		})
 
 		.when('/contact', {
@@ -163,7 +173,7 @@ var app = angular.module('syncBudget',['ngRoute','ui.bootstrap','ngTouch','ngAni
 		});
 		/*----------------------------------------------------------*/
 		app.controller('showExpensesController', function($scope, $modal, $log){
-
+			$scope.expenseToEdit;
 			$scope.getExpenses = function(){
 				console.log("Get Expenses called");
 				var store = $scope.datastore;
@@ -193,7 +203,7 @@ var app = angular.module('syncBudget',['ngRoute','ui.bootstrap','ngTouch','ngAni
 		app.controller('EditExpenseModalController', function($scope, $modalInstance){
 
 			$scope.ok = function () {
-				$modalInstance.close($scope.selected.item);
+				$modalInstance.close();
 			};
 
 			$scope.cancel = function () {
