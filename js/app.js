@@ -290,7 +290,7 @@ var app = angular.module('syncBudget',['ngRoute','ui.bootstrap','ngTouch','ngAni
 			}
 			var chartYValues = [];
 			var chartXValues = [];
-
+			$scope.total = 0;
 			//Populate
 			for(var i=1; i <= 31; i++){
 				var amount = 0;
@@ -302,8 +302,8 @@ var app = angular.module('syncBudget',['ngRoute','ui.bootstrap','ngTouch','ngAni
 				chartXValues.push(i);
 				chartYValues.push(amount);
 				console.log(amount);
-
-
+				$scope.total = amount;
+				$scope.total += $scope.total;
 			}
 			console.log(expensesForDay);
 			console.log("Y Values");
