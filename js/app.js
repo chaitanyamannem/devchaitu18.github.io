@@ -200,7 +200,7 @@ var app = angular.module('syncBudget',['ngRoute','ui.bootstrap','ngTouch','ngAni
 		/*----------------------------------------------------------*/
 		app.controller('EditExpenseModalController', function($scope, $modalInstance){
 
-			var currentExpense = $scope.expenseToEdit = $modalInstance.expenseToEdit;
+			$scope.currentExpense = $modalInstance.expenseToEdit;
 
 			$scope.ok = function () {
 				$modalInstance.close();
@@ -211,7 +211,7 @@ var app = angular.module('syncBudget',['ngRoute','ui.bootstrap','ngTouch','ngAni
 			};
 
 			//Tag Handler
-			$scope.thisExpenseTags = currentExpense.get('tags');
+			$scope.thisExpenseTags = $scope.currentExpense.get('tags').toArray();
 			$scope.allTags = [];
 			var tagsRecords = $scope.datastore.getTable('tags').query();
 			for (var i=0; i < tagsRecords.length; i++) {
@@ -232,7 +232,7 @@ var app = angular.module('syncBudget',['ngRoute','ui.bootstrap','ngTouch','ngAni
 				$event.stopPropagation();
 			$scope.opened = true;
 			};
-			$scope.dt = new Date(currentExpense.get('year'),currentExpense.get('month'),currentExpense.get('date'));
+			$scope.dt = new Date($scope.currentExpense.get('year'),$scope.currentExpense.get('month'),$scope.currentExpense.get('date')).toDateString();
 			$scope.dateOptions = {
 				formatYear: 'yy',
 				startingDay: 1
