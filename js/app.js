@@ -173,7 +173,7 @@ var app = angular.module('syncBudget',['ngRoute','ui.bootstrap','ngTouch','ngAni
 		});
 		/*----------------------------------------------------------*/
 		app.controller('showExpensesController', function($scope, $modal, $log){
-			$scope.expenseToEdit = {};
+			$rootscope.expenseToEdit = {};
 			$scope.getExpenses = function(){
 				console.log("Get Expenses called");
 				var store = $scope.datastore;
