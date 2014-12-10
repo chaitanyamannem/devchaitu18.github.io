@@ -314,6 +314,7 @@ var app = angular.module('syncBudget',['ngRoute','ui.bootstrap','ngTouch','ngAni
 				console.log(amount);
 				$scope.total = amount;
 				$scope.total += $scope.total;
+				console.log($scope.total);
 				$scope.$apply();
 			}
 			console.log(expensesForDay);
