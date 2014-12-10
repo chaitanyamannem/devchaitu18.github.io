@@ -94,7 +94,7 @@ var app = angular.module('syncBudget',['ngRoute','ui.bootstrap','ngTouch','ngAni
 		var client = $rootScope.myClient = new Dropbox.Client({key: APP_KEY});
 
 		$rootScope.isClientAuthenticated = false;
-
+		$rootScope.expenseToEdit = {};
 		// Try to finish OAuth authorization.
 		client.authenticate({interactive: false}, function (error) {
 			if (error) {
@@ -173,7 +173,7 @@ var app = angular.module('syncBudget',['ngRoute','ui.bootstrap','ngTouch','ngAni
 		});
 		/*----------------------------------------------------------*/
 		app.controller('showExpensesController', function($scope, $modal, $log){
-			$rootscope.expenseToEdit = {};
+
 			$scope.getExpenses = function(){
 				console.log("Get Expenses called");
 				var store = $scope.datastore;
