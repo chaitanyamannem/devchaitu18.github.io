@@ -162,7 +162,7 @@ var app = angular.module('syncBudget',['ngRoute','ui.bootstrap','ngTouch','ngAni
 
 		});
 		/*----------------------------------------------------------*/
-		app.controller('showExpensesController', function($scope){
+		app.controller('showExpensesController', function($scope, $modal, $log){
 
 			$scope.getExpenses = function(){
 				console.log("Get Expenses called");
@@ -176,7 +176,33 @@ var app = angular.module('syncBudget',['ngRoute','ui.bootstrap','ngTouch','ngAni
 
 			$scope.getExpenses();
 
+			$scope.open = function () {
+
+				var modalInstance = $modal.open({
+					templateUrl: 'editExpenseModal.html',
+					controller: 'EditExpenseModalController'
+
+
+				});
+				$log.info('Opened Modal');
+			};
+
 		});
+
+		/*----------------------------------------------------------*/
+		app.controller('EditExpenseModalController', function($scope, $modalInstance){
+
+			$scope.ok = function () {
+				$modalInstance.close($scope.selected.item);
+			};
+
+			$scope.cancel = function () {
+				$modalInstance.dismiss('cancel');
+			};
+
+
+		});
+
 
 		/*----------------------------------------------------------*/
 		app.controller('showGraphsController', function($scope){
