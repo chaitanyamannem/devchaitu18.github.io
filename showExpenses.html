@@ -15,7 +15,7 @@
     </thead>
     <tbody>
       <tr ng-repeat="expense in expenses">
-        <td><button class="btn btn-danger" ng-click="open(expense)">Edit</button></td>
+        <td><button class="btn btn-default" ng-click="open(expense)"><i class="fa fa-edit"></i></button></td>
         <td>{{expense.get('category')}}</td>
         <td>{{expense.get('amount')}}</td>
         <td>{{expense.get('date')}}</td>
