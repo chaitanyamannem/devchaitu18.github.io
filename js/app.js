@@ -190,7 +190,8 @@ var app = angular.module('syncBudget',['ngRoute','ui.bootstrap','ngTouch','ngAni
 				$log.info(editExpense);
 				var modalInstance = $modal.open({
 					templateUrl: 'editExpenseModal.html',
-					controller: 'EditExpenseModalController'
+					controller: 'EditExpenseModalController',
+					size: 'lg'
 			});
 				modalInstance.expenseToEdit = editExpense;
 			};
