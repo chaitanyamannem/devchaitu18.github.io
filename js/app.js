@@ -203,15 +203,6 @@ var app = angular.module('syncBudget',['ngRoute','ui.bootstrap','ngTouch','ngAni
 			$scope.currentExpense = $modalInstance.expenseToEdit;
 			$scope.editExpenseAmount = $scope.currentExpense.get('amount');
 			$scope.editExpenseCategory = $scope.currentExpense.get('category');
-
-			$scope.ok = function () {
-				$modalInstance.close();
-			};
-
-			$scope.cancel = function () {
-				$modalInstance.dismiss('cancel');
-			};
-
 			//Tag Handler
 			$scope.thisExpenseTags = $scope.currentExpense.get('tags').toArray();
 			$scope.allTags = [];
@@ -226,6 +217,16 @@ var app = angular.module('syncBudget',['ngRoute','ui.bootstrap','ngTouch','ngAni
 				onDelete: function(tag) {$scope.thisExpenseTags.pop(tag);$scope.$apply();},
 				autocomplete: true
 			});
+
+			$scope.ok = function () {
+				$modalInstance.close();
+			};
+
+			$scope.cancel = function () {
+				$modalInstance.dismiss('cancel');
+			};
+
+
 
 
 			//Date picker
