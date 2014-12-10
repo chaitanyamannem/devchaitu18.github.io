@@ -201,6 +201,8 @@ var app = angular.module('syncBudget',['ngRoute','ui.bootstrap','ngTouch','ngAni
 		app.controller('EditExpenseModalController', function($scope, $modalInstance){
 
 			$scope.currentExpense = $modalInstance.expenseToEdit;
+			$scope.editExpenseAmount = $scope.currentExpense.get('amount');
+			$scope.editExpenseCategory = $scope.currentExpense.get('category');
 
 			$scope.ok = function () {
 				$modalInstance.close();
