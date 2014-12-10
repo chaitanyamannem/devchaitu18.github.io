@@ -191,12 +191,8 @@ var app = angular.module('syncBudget',['ngRoute','ui.bootstrap','ngTouch','ngAni
 				var modalInstance = $modal.open({
 					templateUrl: 'editExpenseModal.html',
 					controller: 'EditExpenseModalController'
-
-
-				});
+			});
 				modalInstance.expenseToEdit = editExpense;
-				$log.info(expenseToEdit);
-				$log.info('Opened Modal');
 			};
 
 		});
@@ -204,7 +200,7 @@ var app = angular.module('syncBudget',['ngRoute','ui.bootstrap','ngTouch','ngAni
 		/*----------------------------------------------------------*/
 		app.controller('EditExpenseModalController', function($scope, $modalInstance){
 
-			$scope.expenseToEdit = $modalInstance.expenseToEdit;
+			var currentExpense = $scope.expenseToEdit = $modalInstance.expenseToEdit;
 
 			$scope.ok = function () {
 				$modalInstance.close();
@@ -213,6 +209,45 @@ var app = angular.module('syncBudget',['ngRoute','ui.bootstrap','ngTouch','ngAni
 			$scope.cancel = function () {
 				$modalInstance.dismiss('cancel');
 			};
+
+			//Tag Handler
+			$scope.thisExpenseTags = currentExpense.get('tags');
+			$scope.allTags = [];
+			var tagsRecords = $scope.datastore.getTable('tags').query();
+			for (var i=0; i < tagsRecords.length; i++) {
+				$scope.allTags.push(tagsRecords[i].get('name'));
+			}
+			$("#edit_expense_tag_handler").tagHandler({
+				assignedTags: $scope.thisExpenseTags,
+				availableTags: $scope.allTags,
+				onAdd: function(tag) {$scope.thisExpenseTags.push(tag);$scope.$apply();},
+				onDelete: function(tag) {$scope.thisExpenseTags.pop(tag);$scope.$apply();},
+				autocomplete: true
+			});
+
+
+			//Date picker
+			$scope.open = function($event) {
+				$event.preventDefault();
+				$event.stopPropagation();
+			$scope.opened = true;
+			};
+			$scope.dt = new Date(currentExpense.get('year'),currentExpense.get('month'),currentExpense.get('date'));
+			$scope.dateOptions = {
+				formatYear: 'yy',
+				startingDay: 1
+			};
+
+			$scope.today = function() {
+				$scope.dt = new Date().toDateString();
+			};
+
+
+			$scope.clear = function () {
+				$scope.dt = null;
+			};
+
+
 
 
 		});
@@ -286,12 +321,9 @@ var app = angular.module('syncBudget',['ngRoute','ui.bootstrap','ngTouch','ngAni
 			for (var i=0; i < tagsRecords.length; i++) {
 				$scope.allTags.push(tagsRecords[i].get('name'));
 			}
-			console.log("All Tags")
-
-
 			$("#expense_tag_handler").tagHandler({
 				availableTags: $scope.allTags,
-				onAdd: function(tag) {$scope.thisExpenseTags.push(tag);$scope.$apply();console.log($scope.thisExpenseTags);},
+				onAdd: function(tag) {$scope.thisExpenseTags.push(tag);$scope.$apply();},
 				onDelete: function(tag) {$scope.thisExpenseTags.pop(tag);$scope.$apply();},
 				autocomplete: true
 			});
