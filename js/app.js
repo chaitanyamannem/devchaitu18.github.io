@@ -94,7 +94,7 @@ var app = angular.module('syncBudget',['ngRoute','ui.bootstrap','ngTouch','ngAni
 		var client = $rootScope.myClient = new Dropbox.Client({key: APP_KEY});
 
 		$rootScope.isClientAuthenticated = false;
-		$rootScope.expenseToEdit = {};
+
 		// Try to finish OAuth authorization.
 		client.authenticate({interactive: false}, function (error) {
 			if (error) {
@@ -188,14 +188,14 @@ var app = angular.module('syncBudget',['ngRoute','ui.bootstrap','ngTouch','ngAni
 
 			$scope.open = function (editExpense) {
 				$log.info(editExpense);
-				$scope.expenseToEdit = editExpense;
-				$log.info(expenseToEdit);
 				var modalInstance = $modal.open({
 					templateUrl: 'editExpenseModal.html',
 					controller: 'EditExpenseModalController'
 
 
 				});
+				modalInstance.expenseToEdit = editExpense;
+				$log.info(expenseToEdit);
 				$log.info('Opened Modal');
 			};
 
@@ -203,6 +203,8 @@ var app = angular.module('syncBudget',['ngRoute','ui.bootstrap','ngTouch','ngAni
 
 		/*----------------------------------------------------------*/
 		app.controller('EditExpenseModalController', function($scope, $modalInstance){
+
+			$scope.expenseToEdit = $modalInstance.expenseToEdit;
 
 			$scope.ok = function () {
 				$modalInstance.close();
@@ -356,7 +358,7 @@ var app = angular.module('syncBudget',['ngRoute','ui.bootstrap','ngTouch','ngAni
 		});
 		/*----------------------------------------------------------*/
 		app.controller('welcomeController', function($scope){
-
+			//Required for angular routing even though its empty
 		});
 		/*----------------------------------------------------------*/
 		app.controller('resetController', function($scope) {
