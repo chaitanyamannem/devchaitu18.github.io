@@ -15,10 +15,10 @@
       <div class="row">
         <div class="col-md-6 pull-left">
 
-          <div class="input-group">
+          <div class="form-group input-group">
             <label for="">Icon</label>
             <input class="form-control" ng-model="iconName"  placeholder="Search icon here" typeahead="icon for icon in icons | filter:$viewValue | limitTo:8">
-            <span ngclick="close()"class="fa fa-close input-group-addon"></span>
+            <span class="input-group-addon"><button ng-click="close()"  class="btn btn-default"><i class="fa fa-close"></button></span>
           </div>
           <div class="form-group">
             <label for="">Category Type</label>
