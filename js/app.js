@@ -371,7 +371,7 @@ var app = angular.module('syncBudget',['ngRoute','ui.bootstrap','ngTouch','ngAni
 				// Add expense to expenses table
 				var newExpenseRecord = expensesTable.insert({
 					amount : $scope.expenseAmount,
-					category : $scope.expenseCategory.get('name'),
+					category : $scope.expenseCategory,
 					date: $scope.dt.getDate(),
 					month: $scope.dt.getMonth(),
 					year: $scope.dt.getFullYear(),
