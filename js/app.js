@@ -452,7 +452,7 @@ var app = angular.module('syncBudget',['ngRoute','ui.bootstrap','ngTouch','ngAni
 
 			};
 
-			$scope.icons = ["adjust",
+			$scope.icons = ["&#xf042;adjust",
 			"adn",
 			"align-center",
 			"align-justify",

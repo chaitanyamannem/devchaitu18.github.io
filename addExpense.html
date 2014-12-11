@@ -8,7 +8,7 @@
         </div>
         <div class="form-group">
           <label for="">Category</label>
-          <input ng-model="expenseCategory" typeahead="category as category.get('name') for category in categories | limitTo:8" class="form-control"  placeholder="Category">
+          <input ng-model="expenseCategory" typeahead="category as category.get('name') for category in categories | filter:$viewValue | limitTo:8" class="form-control"  placeholder="Category">
         </div>
         <div class="form-group">
           <p class="input-group">
