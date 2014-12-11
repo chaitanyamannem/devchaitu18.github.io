@@ -346,6 +346,7 @@ var app = angular.module('syncBudget',['ngRoute','ui.bootstrap','ngTouch','ngAni
 			$scope.thisExpenseTags = [];
 			$scope.allTags = [];
 			var tagsRecords = $scope.datastore.getTable('tags').query();
+			$scope.categories = $scope.datastore.getTable('categories').query();
 			for (var i=0; i < tagsRecords.length; i++) {
 				$scope.allTags.push(tagsRecords[i].get('name'));
 			}
