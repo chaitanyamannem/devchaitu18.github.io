@@ -450,14 +450,17 @@ var app = angular.module('syncBudget',['ngRoute','ui.bootstrap','ngTouch','ngAni
 			$scope.addNewCategory = function(){
 				var store = $scope.datastore;
 				var categoriesTable = store.getTable('categories');
-
-				var newCategoryRecord = categoriesTable.insert({
-					name : $scope.categoryName,
-					icon : $scope.iconName,
-					type : $scope.categoryType
-
-				});
-
+				var newCategoryRecord = {};
+				newCategoryRecord.name = $scope.categoryName;
+				newCategoryRecord.icon = $scope.iconName;
+				newCategoryRecord.type = $scope.categoryType;
+				if($scope.categoryType === 'Secondary'){
+					newCategoryRecord.primary = $scope.categoryPrimary;
+				}
+				if($scope.categoryType === 'Tertiary'){
+					newCategoryRecord.secondary = $scope.categorySecondary;
+				}
+				categoriesTable.insert(newCategoryRecord);
 			};
 
 			$scope.icons = ["adjust",

@@ -43,6 +43,14 @@
             <label for="">Category name</label>
             <input ng-model="categoryName" class="form-control"  placeholder="Enter Category Name">
           </div>
+          <div ng-show="categoryType === 'Secondary'" class="form-group">
+            <label for="">{{categoryName}} is secondary category to</label>
+            <input ng-model="categoryPrimary" class="form-control"  placeholder="Enter primary Category Name">
+          </div>
+          <div ng-show="categoryType === 'Tertiary'" class="form-group">
+            <label for="">{{categoryName}} is tertiary category to</label>
+            <input ng-model="categorySecondary" class="form-control"  placeholder="Enter secondary Category Name">
+          </div>
           <button ng-click="addNewCategory()" type="submit" class="btn btn-default">Add</button>
 
 
