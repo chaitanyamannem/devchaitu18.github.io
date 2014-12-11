@@ -16,11 +16,11 @@
         <div class="col-md-6 pull-left">
 
           <div class="form-group">
-            <div class="input-group">
-            <label for="">Icon</label>
+
+            <label for="">Icon</label><button type="button" ng-clcik="close()" class="btn btn-default btn-xs">X</button>
             <input class="form-control" ng-model="iconName"  placeholder="Search icon here" typeahead="icon for icon in icons | filter:$viewValue | limitTo:8">
-            <div ng-click="close()" class="input-group-addon">x</div>
-          </div>
+
+
           </div>
           <div class="form-group">
             <label for="">Category Type</label>
