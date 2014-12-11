@@ -345,8 +345,12 @@ var app = angular.module('syncBudget',['ngRoute','ui.bootstrap','ngTouch','ngAni
 			$scope.isExpenseAdded = false;
 			$scope.thisExpenseTags = [];
 			$scope.allTags = [];
+			$scope.categories = [];
 			var tagsRecords = $scope.datastore.getTable('tags').query();
-			$scope.categories = $scope.datastore.getTable('categories').query();
+			var allCategories = $scope.datastore.getTable('categories').query();
+			for (var i=0; i < allCategories.length; i++) {
+				$scope.categories.push(allCategories[i].get('name'));
+			}
 			for (var i=0; i < tagsRecords.length; i++) {
 				$scope.allTags.push(tagsRecords[i].get('name'));
 			}
@@ -446,6 +450,7 @@ var app = angular.module('syncBudget',['ngRoute','ui.bootstrap','ngTouch','ngAni
 			$scope.addNewCategory = function(){
 				var store = $scope.datastore;
 				var categoriesTable = store.getTable('categories');
+
 				var newCategoryRecord = categoriesTable.insert({
 					name : $scope.categoryName,
 					icon : $scope.iconName,
