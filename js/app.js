@@ -46,7 +46,7 @@ var app = angular.module('syncBudget',['ngRoute','ui.bootstrap','ngTouch','ngAni
 					var defer = $q.defer();
 					$timeout(function(){
 						defer.resolve();
-					},2000);
+					},3000);
 					return defer.promise;
 				}
 			}
@@ -300,7 +300,8 @@ var app = angular.module('syncBudget',['ngRoute','ui.bootstrap','ngTouch','ngAni
 			}
 			var chartYValues = [];
 			var chartXValues = [];
-			$scope.total = 0;
+			$scope.total = {};
+			var monthlyTotal = 0;
 			//Populate
 			for(var i=1; i <= 31; i++){
 				var amount = 0;
@@ -311,16 +312,10 @@ var app = angular.module('syncBudget',['ngRoute','ui.bootstrap','ngTouch','ngAni
 				}
 				chartXValues.push(i);
 				chartYValues.push(amount);
-				console.log(amount);
-				$scope.total = amount;
-				$scope.total += $scope.total;
-				console.log($scope.total);
-				$scope.$apply();
+				monthlyTotal += amount;
 			}
-			console.log(expensesForDay);
-			console.log("Y Values");
-			console.log(chartYValues);
-
+			$scope.total.monthly = monthlyTotal;
+			$scope.$apply();
 
 			//Show Chart
 			$('#dailyChart').highcharts({
