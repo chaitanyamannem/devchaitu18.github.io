@@ -5,7 +5,7 @@
 
           <div style ="color: #fff;background-color: #1D9E74;">
              <h4 class="text-center">Icon Preview</h4>
-            <span style=" height: 280px; padding-top: 100px;" class="text-center fa fa-{{iconName}} fa-5x"></span>
+            <span style=" height: 280px; padding-top: 100px;" class="center-block fa fa-{{iconName}} fa-5x"></span>
           </div>
 
 
@@ -15,9 +15,10 @@
       <div class="row">
         <div class="col-md-6 pull-left">
 
-          <div class="form-group">
+          <div class="input-group">
             <label for="">Icon</label>
             <input class="form-control" ng-model="iconName"  placeholder="Search icon here" typeahead="icon for icon in icons | filter:$viewValue | limitTo:8">
+            <span ngclick="close()"class="fa fa-close input-group-addon"></span>
           </div>
           <div class="form-group">
             <label for="">Category Type</label>

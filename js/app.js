@@ -438,7 +438,10 @@ var app = angular.module('syncBudget',['ngRoute','ui.bootstrap','ngTouch','ngAni
 
 		/*----------------------------------------------------------*/
 		app.controller('addCategoriesController', function($scope) {
-			$scope.iconName = "glass";
+			$scope.iconName = "";
+			$scope.close = function(){
+				$scope.iconName = "";
+			};
 			$scope.categoryType = "Primary";
 			$scope.addNewCategory = function(){
 				var store = $scope.datastore;
@@ -452,7 +455,7 @@ var app = angular.module('syncBudget',['ngRoute','ui.bootstrap','ngTouch','ngAni
 
 			};
 
-			$scope.icons = ["&#xf042;adjust",
+			$scope.icons = ["adjust",
 			"adn",
 			"align-center",
 			"align-justify",
