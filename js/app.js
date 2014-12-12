@@ -129,7 +129,7 @@ var app = angular.module('syncBudget',['ngRoute','ui.bootstrap','ngTouch','ngAni
 			scope: {
 				leaf: '='
 			},
-			template: "<li></li>",
+			template: "<li>{{leaf.get('name')}}</li>",
 			link: function (scope, element, attrs){
 				if(angular.isObject(scope.leaf.nodes)){
 					element.append("<tree tree='leaf.nodes'></tree>");
@@ -210,40 +210,7 @@ var app = angular.module('syncBudget',['ngRoute','ui.bootstrap','ngTouch','ngAni
 		/*----------------------------------------------------------*/
 		app.controller('showCategoriesController', function($scope,$log){
 
-			$scope.tasks = [
-			{
-				name: 'Europe',
-				children: [
-				{
-					name: 'Italy',
-					children: [
-					{
-						name: 'Rome'
-					},
-					{
-						name: 'Milan'
-					}
-					]
-				},
-				{
-					name: 'Spain'
-				}
-				]
-			},
-			{
-				name: 'South America',
-				children: [
-				{
-					name: 'Brasil'
-				},
-				{
-					name: 'Peru'
-				}
-				]
-			}
-			];
-
-
+			
 
 			$scope.getCategories = function(){
 				console.log("Get Categories called");
