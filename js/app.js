@@ -116,7 +116,7 @@ var app = angular.module('syncBudget',['ngRoute','ui.bootstrap','ngTouch','ngAni
 			scope: {
 				tree: '='
 			},
-			template: "<ul><leaf ng-repeat='leaf in tree' leaf='leaf'></leaf></ul>"
+			template: "<ul class='list-group'><leaf ng-repeat='leaf in tree' leaf='leaf'></leaf></ul>"
 		}
 
 
@@ -129,7 +129,7 @@ var app = angular.module('syncBudget',['ngRoute','ui.bootstrap','ngTouch','ngAni
 			scope: {
 				leaf: '='
 			},
-			template: "<li>{{leaf.get('name')}}</li>",
+			template: "<li class='list-group-item'>{{leaf.get('name')}}</li>",
 			link: function (scope, element, attrs){
 				if(angular.isObject(scope.leaf.nodes)){
 					element.append("<tree tree='leaf.nodes'></tree>");

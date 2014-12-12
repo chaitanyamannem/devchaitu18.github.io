@@ -1,12 +1,5 @@
 <div  ng-controller="showCategoriesController">
   <h1>My Categories</h1>
-  <ul class="list-group">
-    <li class="list-group-item" ng-repeat="category in primarycategories">
-      {{category.get('name')}}<span class="badge">{{category.subCategories.length}}</span>
-
-    </li>
-  </ul>
-
   <tree tree="primarycategories"></tree>
 
 </div>
