@@ -129,7 +129,7 @@ var app = angular.module('syncBudget',['ngRoute','ui.bootstrap','ngTouch','ngAni
 			scope: {
 				leaf: '='
 			},
-			template: "<li class='list-group-item'>{{leaf.get('name')}}</li>",
+			template: "<li class='list-group-item'><i class='fa fa-{{leaf.iconName}}'></i>{{leaf.get('name')}}</li>",
 			link: function (scope, element, attrs){
 				if(angular.isObject(scope.leaf.nodes)){
 					element.append("<tree tree='leaf.nodes'></tree>");
@@ -220,9 +220,11 @@ var app = angular.module('syncBudget',['ngRoute','ui.bootstrap','ngTouch','ngAni
 				$scope.primarycategories = categoriesTable.query({type:'Primary'});
 				for(var i = 0; i < $scope.primarycategories.length; i++){
 					var primaryCategoryName  = $scope.primarycategories[i].get('name');
+					$scope.primarycategories[i].iconName = $scope.primarycategories[i].get('icon');
 					$scope.primarycategories[i].nodes = categoriesTable.query({type:'Secondary', primary:primaryCategoryName});
 					for(var j = 0; j < $scope.primarycategories[i].nodes.length; j++){
 						var secondaryCategoryName  = $scope.primarycategories[i].nodes[j].get('name');
+						$scope.primarycategories[i].nodes[j].iconName = $scope.primarycategories[i].nodes[j].get('icon');
 						$scope.primarycategories[i].nodes[j].nodes = categoriesTable.query({type:'Tertiary', secondary:secondaryCategoryName});
 					}
 				}
