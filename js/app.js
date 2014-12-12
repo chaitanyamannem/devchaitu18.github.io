@@ -441,7 +441,7 @@ var app = angular.module('syncBudget',['ngRoute','ui.bootstrap','ngTouch','ngAni
 		});
 
 		/*----------------------------------------------------------*/
-		app.controller('addCategoriesController', function($scope) {
+		app.controller('addCategoriesController', function($scope,$timeout) {
 			$scope.iconName = "";
 			$scope.isCategoryAdded = false;
 			$scope.close = function(){
