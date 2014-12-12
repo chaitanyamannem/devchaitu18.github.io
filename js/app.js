@@ -107,6 +107,41 @@ var app = angular.module('syncBudget',['ngRoute','ui.bootstrap','ngTouch','ngAni
 
 	});
 
+	//Custom directive
+	app.directive('tree', function(){
+
+		return {
+			restrict: "E",
+			replace: true,
+			scope: {
+				tree: '='
+			},
+			template: "<ul><leaf ng-repeat='leaf in tree' leaf='leaf'></leaf></ul>"
+		}
+
+
+	});
+
+	app.directive('leaf', function($compile){
+		return {
+			restrict: "E",
+			replace: true,
+			scope: {
+				leaf: '='
+			},
+			template: "<li></li>",
+			link: function (scope, element, attrs){
+				if(angular.isObject(scope.leaf.nodes)){
+					element.append("<tree tree='leaf.nodes'></tree>");
+					$compile(element.contents())(scope)
+				}
+			}
+
+		}
+
+
+	});
+
 	//Dropbox Intialization is done here
 	app.run(function($rootScope) {
 
@@ -185,9 +220,9 @@ var app = angular.module('syncBudget',['ngRoute','ui.bootstrap','ngTouch','ngAni
 				$scope.primarycategories = categoriesTable.query({type:'Primary'});
 				for(var i = 0; i < $scope.primarycategories.length; i++){
 					var primaryCategoryName = $scope.primarycategories[i].get('name');
-					$scope.primarycategories[i].subCategories = categoriesTable.query({type:'Secondary', primary:primaryCategoryName});
+					$scope.primarycategories[i].nodes = categoriesTable.query({type:'Secondary', primary:primaryCategoryName});
 					$log.info(primaryCategoryName);
-					$log.info($scope.primarycategories[i].subCategories.length);
+					$log.info($scope.primarycategories[i].nodes.length);
 				}
 
 			};
