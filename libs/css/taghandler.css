@@ -3,10 +3,6 @@
   fieldset { display: table-cell; }
 }
 
-.showcategories {
-  color: #fff;background-color: #1D9E74;
-}
-
 .ui-autocomplete {
   background-color: #fff;
   border: 1px solid rgba(0,0,0,.15);
