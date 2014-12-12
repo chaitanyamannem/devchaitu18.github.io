@@ -219,7 +219,7 @@ var app = angular.module('syncBudget',['ngRoute','ui.bootstrap','ngTouch','ngAni
 				var categoriesTable = store.getTable('categories');
 				$scope.primarycategories = categoriesTable.query({type:'Primary'});
 				for(var i = 0; i < $scope.primarycategories.length; i++){
-					var primaryCategoryName = $scope.primarycategories[i].get('name');
+					var primaryCategoryName = $scope.primarycategories[i].name = $scope.primarycategories[i].get('name');
 					$scope.primarycategories[i].nodes = categoriesTable.query({type:'Secondary', primary:primaryCategoryName});
 					$log.info(primaryCategoryName);
 					$log.info($scope.primarycategories[i].nodes.length);
