@@ -1,7 +1,7 @@
 <div  ng-controller="showCategoriesController">
   <h1>My Categories</h1>
-  <ul>
-    <li ng-repeat="category in categories">
+  <ul class="list-group">
+    <li class="list-group-item" ng-repeat="category in categories">
       {{category.get('name')}}
 
     </li>
