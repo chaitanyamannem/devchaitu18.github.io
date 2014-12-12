@@ -35,7 +35,17 @@ var app = angular.module('syncBudget',['ngRoute','ui.bootstrap','ngTouch','ngAni
 		})
 
 		.when('/showCategories', {
-			templateUrl : 'showCategories.html'
+			templateUrl : 'showCategories.html',
+			controller: 'showCategoriesController',
+			resolve: {
+				app: function($q, $timeout) {
+					var defer = $q.defer();
+					$timeout(function(){
+						defer.resolve();
+					},3000);
+					return defer.promise;
+				}
+			}
 		})
 
 		.when('/showGraphs', {
@@ -163,7 +173,7 @@ var app = angular.module('syncBudget',['ngRoute','ui.bootstrap','ngTouch','ngAni
 
 		});
 		/*----------------------------------------------------------*/
-		app.controller('showCategoriesController', function($scope){
+		app.controller('showCategoriesController', function($scope,$log){
 
 
 
@@ -172,8 +182,14 @@ var app = angular.module('syncBudget',['ngRoute','ui.bootstrap','ngTouch','ngAni
 				var store = $scope.datastore;
 				console.log(store);
 				var categoriesTable = store.getTable('categories');
-				$scope.categories = categoriesTable.query();
-				console.log($scope.categories);
+				$scope.primarycategories = categoriesTable.query({type:'Primary'});
+				for(var i = 0; i < $scope.primarycategories.length; i++){
+					var primaryCategoryName = $scope.primarycategories[i].get('name');
+					var $scope.primarycategories[i].subCategories = categoriesTable.query({type:'Secondary', primary:primaryCategoryName});
+					log.info(primaryCategoryName);
+					log.info($scope.primarycategories[i].subCategories.length);
+				}
+
 			};
 
 			$scope.getCategories();
