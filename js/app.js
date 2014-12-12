@@ -443,6 +443,7 @@ var app = angular.module('syncBudget',['ngRoute','ui.bootstrap','ngTouch','ngAni
 		/*----------------------------------------------------------*/
 		app.controller('addCategoriesController', function($scope) {
 			$scope.iconName = "";
+			$scope.isCategoryAdded = false;
 			$scope.close = function(){
 				$scope.iconName = "";
 			};
@@ -461,6 +462,11 @@ var app = angular.module('syncBudget',['ngRoute','ui.bootstrap','ngTouch','ngAni
 					newCategoryRecord.secondary = $scope.categorySecondary;
 				}
 				categoriesTable.insert(newCategoryRecord);
+				$scope.isCategoryAdded = true;
+				$timeout(function(){
+					$scope.isCategoryAdded = false;
+					$scope.$apply();
+				},2000);
 			};
 
 			$scope.icons = ["adjust",
