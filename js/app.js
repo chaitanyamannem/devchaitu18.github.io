@@ -116,7 +116,7 @@ var app = angular.module('syncBudget',['ngRoute','ui.bootstrap','ngTouch','ngAni
 			scope: {
 				tree: '='
 			},
-			template: "<ul style ='color: #fff;background-color: #DC143C;' class='list-group'><leaf ng-repeat='leaf in tree' leaf='leaf'></leaf></ul>"
+			template: "<ul class='list-group'><leaf ng-repeat='leaf in tree' leaf='leaf'></leaf></ul>"
 		}
 
 
