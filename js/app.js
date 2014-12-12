@@ -116,7 +116,7 @@ var app = angular.module('syncBudget',['ngRoute','ui.bootstrap','ngTouch','ngAni
 			scope: {
 				tree: '='
 			},
-			template: "<ul><leaf ng-repeat='leaf in tree' leaf='leaf'><span>a</span></leaf></ul>"
+			template: "<ul><leaf ng-repeat='leaf in tree' leaf='leaf'></leaf></ul>"
 		}
 
 
@@ -209,6 +209,39 @@ var app = angular.module('syncBudget',['ngRoute','ui.bootstrap','ngTouch','ngAni
 		});
 		/*----------------------------------------------------------*/
 		app.controller('showCategoriesController', function($scope,$log){
+
+			$scope.tasks = [
+			{
+				name: 'Europe',
+				children: [
+				{
+					name: 'Italy',
+					children: [
+					{
+						name: 'Rome'
+					},
+					{
+						name: 'Milan'
+					}
+					]
+				},
+				{
+					name: 'Spain'
+				}
+				]
+			},
+			{
+				name: 'South America',
+				children: [
+				{
+					name: 'Brasil'
+				},
+				{
+					name: 'Peru'
+				}
+				]
+			}
+			];
 
 
 
