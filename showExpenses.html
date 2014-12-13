@@ -11,6 +11,7 @@
         <th>Month</th>
         <th>Year</th>
         <th>Tags</th>
+        <th>Delete</th>
       </tr>
     </thead>
     <tbody>
@@ -22,6 +23,7 @@
         <td>{{expense.get('month')}}</td>
         <td>{{expense.get('year')}}</td>
         <td>{{expense.get('tags').toArray()}}</td>
+        <td><button class="btn btn-default" ng-click="delete(expense)"><i class="fa fa-trash"></i></button></td>
       </tr>
     </tbody>
   </table>

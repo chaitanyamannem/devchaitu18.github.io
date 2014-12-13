@@ -251,6 +251,10 @@ var app = angular.module('syncBudget',['ngRoute','ui.bootstrap','ngTouch','ngAni
 
 			$scope.getExpenses();
 
+			$scope.delete = function(expense){
+				expense.deleteRecord();
+			}
+
 			$scope.open = function (editExpense) {
 				$log.info(editExpense);
 				var modalInstance = $modal.open({
