@@ -76,6 +76,20 @@ var app = angular.module('syncBudget',['ngRoute','ui.bootstrap','ngTouch','ngAni
 			}
 		})
 
+		.when('/showExpensesByCategory', {
+			templateUrl : 'showExpensesByCategory.html',
+			controller: 'showExpensesByCategoryController',
+			resolve: {
+				app: function($q, $timeout) {
+					var defer = $q.defer();
+					$timeout(function(){
+						defer.resolve();
+					},3000);
+					return defer.promise;
+				}
+			}
+		})
+
 		.when('/contact', {
 			templateUrl : 'contact.html'
 		})
@@ -262,6 +276,44 @@ var app = angular.module('syncBudget',['ngRoute','ui.bootstrap','ngTouch','ngAni
 					controller: 'EditExpenseModalController',
 					size: 'lg'
 			});
+				modalInstance.expenseToEdit = editExpense;
+			};
+
+		});
+
+		/*----------------------------------------------------------*/
+		app.controller('showExpensesByCategoryController', function($scope, $modal, $log){
+			$scope.showCategoryName = "";
+			$scope.total = 0;
+			$scope.categories = [];
+			var allCategories = $scope.datastore.getTable('categories').query();
+			for (var i=0; i < allCategories.length; i++) {
+				$scope.categories.push(allCategories[i].get('name'));
+			}
+			$scope.getExpenses = function(){
+				console.log("Get Expenses called");
+				var store = $scope.datastore;
+				var expensesTable = store.getTable('expenses');
+				$scope.expenses = expensesTable.query({category: $scope.showCategoryName});
+				for (var i=0; i < $scope.expenses.length; i++) {
+					$scope.total += Number($scope.expenses[i].get('amount'));
+				}
+				$scope.$apply();
+			};
+
+			$scope.getExpenses();
+
+			$scope.delete = function(expense){
+				expense.deleteRecord();
+			}
+
+			$scope.open = function (editExpense) {
+				$log.info(editExpense);
+				var modalInstance = $modal.open({
+					templateUrl: 'editExpenseModal.html',
+					controller: 'EditExpenseModalController',
+					size: 'lg'
+				});
 				modalInstance.expenseToEdit = editExpense;
 			};
 
