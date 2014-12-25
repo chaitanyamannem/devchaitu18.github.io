@@ -292,6 +292,7 @@ var app = angular.module('syncBudget',['ngRoute','ui.bootstrap','ngTouch','ngAni
 			}
 			$scope.getExpenses = function(){
 				console.log("Get Expenses called");
+				$scope.total = 0;
 				var store = $scope.datastore;
 				var expensesTable = store.getTable('expenses');
 				$scope.expenses = expensesTable.query({category: $scope.showCategoryName});
