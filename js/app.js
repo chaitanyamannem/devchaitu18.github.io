@@ -90,6 +90,20 @@ var app = angular.module('syncBudget',['ngRoute','ui.bootstrap','ngTouch','ngAni
 			}
 		})
 
+			.when('/showExpensesByTags', {
+				templateUrl : 'showExpensesByTags.html',
+				controller: 'showExpensesByTagsController',
+				resolve: {
+					app: function($q, $timeout) {
+						var defer = $q.defer();
+						$timeout(function(){
+							defer.resolve();
+						},3000);
+						return defer.promise;
+					}
+				}
+			})
+
 		.when('/contact', {
 			templateUrl : 'contact.html'
 		})
@@ -298,8 +312,9 @@ var app = angular.module('syncBudget',['ngRoute','ui.bootstrap','ngTouch','ngAni
 				$scope.expenses = expensesTable.query({category: $scope.showCategoryName});
 				for (var i=0; i < $scope.expenses.length; i++) {
 					$scope.total += Number($scope.expenses[i].get('amount'));
+					$log.info($scope.expenses[i].get('tags'));
 				}
-				$scope.$apply();
+				
 			};
 
 			$scope.getExpenses();
@@ -319,6 +334,49 @@ var app = angular.module('syncBudget',['ngRoute','ui.bootstrap','ngTouch','ngAni
 			};
 
 		});
+
+	/*----------------------------------------------------------*/
+	app.controller('showExpensesByTagsController', function($scope, $modal, $log){
+		$scope.showTagName = "";
+		$scope.total = 0;
+		$scope.tags = [];
+		var allTags = $scope.datastore.getTable('tags').query();
+		for (var i=0; i < allTags.length; i++) {
+			$scope.tags.push(allTags[i].get('name'));
+		}
+		$scope.getExpenses = function(){
+			$scope.total = 0;
+			var store = $scope.datastore;
+			var expensesTable = store.getTable('expenses');
+			$scope.expenses = [];
+			$scope.AllExpenses = expensesTable.query();
+			for (var i=0; i < $scope.AllExpenses.length; i++) {
+				if(_.contains($scope.AllExpenses[i].get('tags').toArray(),$scope.showTagName)){
+					$scope.total += Number($scope.AllExpenses[i].get('amount'));
+					$scope.expenses.push($scope.AllExpenses[i]);
+				}
+
+			}
+
+		};
+
+		$scope.getExpenses();
+
+		$scope.delete = function(expense){
+			expense.deleteRecord();
+		}
+
+		$scope.open = function (editExpense) {
+			$log.info(editExpense);
+			var modalInstance = $modal.open({
+				templateUrl: 'editExpenseModal.html',
+				controller: 'EditExpenseModalController',
+				size: 'lg'
+			});
+			modalInstance.expenseToEdit = editExpense;
+		};
+
+	});
 
 		/*----------------------------------------------------------*/
 		app.controller('EditExpenseModalController', function($scope, $modalInstance){
