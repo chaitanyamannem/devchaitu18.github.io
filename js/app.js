@@ -340,10 +340,22 @@ var app = angular.module('syncBudget',['ngRoute','ui.bootstrap','ngTouch','ngAni
 		$scope.showTagName = "";
 		$scope.total = 0;
 		$scope.tags = [];
+		$scope.tagCloud = [];
+
+
 		var allTags = $scope.datastore.getTable('tags').query();
 		for (var i=0; i < allTags.length; i++) {
 			$scope.tags.push(allTags[i].get('name'));
+			var tagCloudObject = {};
+			tagCloudObject.text = allTags[i].get('name');
+			tagCloudObject.weight = 10;
+			$scope.tagCloud.push(tagCloudObject);
+
 		}
+		$('#tagCloud').jQCloud($scope.tagCloud, {
+			width: 500,
+			height: 350
+		});
 		$scope.getExpenses = function(){
 			$scope.total = 0;
 			var store = $scope.datastore;
