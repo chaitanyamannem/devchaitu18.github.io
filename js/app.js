@@ -76,6 +76,20 @@ var app = angular.module('syncBudget',['ngRoute','ui.bootstrap','ngTouch','ngAni
 				}
 			})
 
+			.when('/showGraphsByTags', {
+				templateUrl : 'showGraphsByTags.html',
+				controller: 'showGraphsByTagsCtrl',
+				resolve: {
+					app: function($q, $timeout) {
+						var defer = $q.defer();
+						$timeout(function(){
+							defer.resolve();
+						},3000);
+						return defer.promise;
+					}
+				}
+			})
+
 		.when('/showExpenses', {
 			templateUrl : 'showExpenses.html',
 			controller: 'showExpensesController',
@@ -554,7 +568,7 @@ var app = angular.module('syncBudget',['ngRoute','ui.bootstrap','ngTouch','ngAni
 
 
 		//Populate X and Y values
-		for(var i=1; i < allCategories.length; i++){
+		for(var i=0; i < allCategories.length; i++){
 			var amount = 0;
 			var categoryExpenses = expensesForCategory(queryMonth,queryYear,allCategories[i].get('name'));
 			for(var j=0; j < categoryExpenses.length; j++){
@@ -575,6 +589,72 @@ var app = angular.module('syncBudget',['ngRoute','ui.bootstrap','ngTouch','ngAni
 			},
 			title: {
 				text: 'Your Expenses Summarized By Categories'
+			},
+			xAxis: {
+				categories: chartXValues
+			},
+			yAxis: {
+				title: {
+					text: 'Amount'
+				}
+			},
+			plotOptions: {
+				bar: {
+					dataLabels: {
+						enabled: true
+					}
+				}
+			},
+			series: [{
+				data: chartYValues
+			}]
+		});
+
+	});
+
+	/*----------------------------------------------------------*/
+	app.controller('showGraphsByTagsCtrl', function($scope){
+
+		var queryMonth = 11;
+		var queryYear = 2014;
+		//Get all tags
+		var allTags = $scope.datastore.getTable('tags').query();
+		var getExpenses = function(queryMonth,queryYear){
+
+			return $scope.datastore.getTable('expenses').query({month : queryMonth,
+				year : queryYear
+			});
+		};
+
+		var chartYValues = [];
+		var chartXValues = [];
+
+		var allExpenses = getExpenses(queryMonth,queryYear);
+		//Populate X and Y values
+		for(var i=0; i < allTags.length; i++){
+			var amount = 0;
+
+			for (var k=0; k < allExpenses.length; k++) {
+				if(_.contains(allExpenses[k].get('tags').toArray(),allTags[i].get('name'))){
+					amount += Number(allExpenses[k].get('amount'));
+				}
+
+			}
+
+			chartXValues.push(allTags[i].get('name'));
+			chartYValues.push(amount);
+
+		}
+
+
+
+		//Show Chart
+		$('#tagChart').highcharts({
+			chart: {
+				type: 'bar'
+			},
+			title: {
+				text: 'Your Expenses Summarized By Tags'
 			},
 			xAxis: {
 				categories: chartXValues
