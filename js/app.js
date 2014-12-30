@@ -267,13 +267,11 @@ var app = angular.module('syncBudget',['ngRoute','ui.bootstrap','ngTouch','ngAni
 		/*----------------------------------------------------------*/
 		app.controller('showExpensesController', function($scope, $modal, $log){
 
-			$scope.getExpenses = function(){
+			$scope.getExpenses = function() {
 				console.log("Get Expenses called");
 				var store = $scope.datastore;
 				var expensesTable = store.getTable('expenses');
 				$scope.expenses = expensesTable.query();
-
-
 
 			};
 
@@ -533,9 +531,12 @@ var app = angular.module('syncBudget',['ngRoute','ui.bootstrap','ngTouch','ngAni
 			for (var i=0; i < allCategories.length; i++) {
 				$scope.categories.push(allCategories[i].get('name'));
 			}
-			for (var i=0; i < tagsRecords.length; i++) {
-				$scope.allTags.push(tagsRecords[i].get('name'));
-			}
+			var getTags = function(){
+				for (var i=0; i < tagsRecords.length; i++) {
+					$scope.allTags.push(tagsRecords[i].get('name'));
+				}
+			};
+			getTags();
 			$("#expense_tag_handler").tagHandler({
 				availableTags: $scope.allTags,
 				onAdd: function(tag) {$scope.thisExpenseTags.push(tag);$scope.$apply();},
@@ -562,9 +563,9 @@ var app = angular.module('syncBudget',['ngRoute','ui.bootstrap','ngTouch','ngAni
 				});
 				// Add new tags to tags table
 				var tagsTable = store.getTable('tags');
+				//Update tags List with latest
+				getTags();
 				$scope.newTags = _.difference($scope.thisExpenseTags, $scope.allTags);
-				console.log("New Tags");
-				console.log($scope.newTags);
 				var insertTags = $scope.newTags;
 				for (var i=0; i < insertTags.length; i++) {
 					tagsTable.insert({
