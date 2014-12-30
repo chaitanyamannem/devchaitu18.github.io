@@ -653,7 +653,7 @@ var app = angular.module('syncBudget',['ngRoute','ui.bootstrap','ngTouch','ngAni
 		$('#tagChart').highcharts({
 			chart: {
 				type: 'bar',
-				zoomType: 'X'
+				zoomType: 'x'
 			},
 			title: {
 				text: 'Your Expenses Summarized By Tags'
