@@ -585,10 +585,11 @@ var app = angular.module('syncBudget',['ngRoute','ui.bootstrap','ngTouch','ngAni
 		//Show Chart
 		$('#categoryChart').highcharts({
 			chart: {
-				type: 'bar'
+				type: 'bar',
+				zoomType: 'x'
 			},
 			title: {
-				text: 'Your Expenses Summarized By Categories'
+				text: 'Drag on the chart to Zoom'
 			},
 			xAxis: {
 				categories: chartXValues
@@ -656,7 +657,7 @@ var app = angular.module('syncBudget',['ngRoute','ui.bootstrap','ngTouch','ngAni
 				zoomType: 'x'
 			},
 			title: {
-				text: 'Your Expenses Summarized By Tags'
+				text: 'Drag on the chart to Zoom'
 			},
 			xAxis: {
 				categories: chartXValues
