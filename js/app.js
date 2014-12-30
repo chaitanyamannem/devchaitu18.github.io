@@ -62,6 +62,20 @@ var app = angular.module('syncBudget',['ngRoute','ui.bootstrap','ngTouch','ngAni
 			}
 		})
 
+			.when('/showGraphsByCategories', {
+				templateUrl : 'showGraphsByCategories.html',
+				controller: 'showGraphsByCategoriesCtrl',
+				resolve: {
+					app: function($q, $timeout) {
+						var defer = $q.defer();
+						$timeout(function(){
+							defer.resolve();
+						},3000);
+						return defer.promise;
+					}
+				}
+			})
+
 		.when('/showExpenses', {
 			templateUrl : 'showExpenses.html',
 			controller: 'showExpensesController',
@@ -519,6 +533,70 @@ var app = angular.module('syncBudget',['ngRoute','ui.bootstrap','ngTouch','ngAni
 			});
 
 		});
+
+	/*----------------------------------------------------------*/
+	app.controller('showGraphsByCategoriesCtrl', function($scope){
+
+		var queryMonth = 11;
+		var queryYear = 2014;
+		//Get all Categories
+		var allCategories = $scope.datastore.getTable('categories').query();
+		var expensesForCategory = function(queryMonth,queryYear,queryCategory){
+
+			return $scope.datastore.getTable('expenses').query({month : queryMonth,
+																year : queryYear,
+																category: queryCategory
+			});
+		}
+
+		var chartYValues = [];
+		var chartXValues = [];
+
+
+		//Populate X and Y values
+		for(var i=1; i < allCategories.length; i++){
+			var amount = 0;
+			var categoryExpenses = expensesForCategory(queryMonth,queryYear,allCategories[i].get('name'));
+			for(var j=0; j < categoryExpenses.length; j++){
+				amount += Number(categoryExpenses[j].get('amount'));
+
+			}
+			chartXValues.push(allCategories[i].get('name'));
+			chartYValues.push(amount);
+
+		}
+
+
+
+		//Show Chart
+		$('#categoryChart').highcharts({
+			chart: {
+				type: 'bar'
+			},
+			title: {
+				text: 'Your Expenses Summarized By Categories'
+			},
+			xAxis: {
+				categories: chartXValues
+			},
+			yAxis: {
+				title: {
+					text: 'Amount'
+				}
+			},
+			plotOptions: {
+				bar: {
+					dataLabels: {
+						enabled: true
+					}
+				}
+			},
+			series: [{
+				data: chartYValues
+			}]
+		});
+
+	});
 
 		/*----------------------------------------------------------*/
 		app.controller('addExpenseController', function($scope,$timeout){
