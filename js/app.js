@@ -619,6 +619,7 @@ var app = angular.module('syncBudget',['ngRoute','ui.bootstrap','ngTouch','ngAni
 		var queryYear = 2014;
 		//Get all tags
 		var allTags = $scope.datastore.getTable('tags').query();
+
 		var getExpenses = function(queryMonth,queryYear){
 
 			return $scope.datastore.getTable('expenses').query({month : queryMonth,
@@ -651,7 +652,8 @@ var app = angular.module('syncBudget',['ngRoute','ui.bootstrap','ngTouch','ngAni
 		//Show Chart
 		$('#tagChart').highcharts({
 			chart: {
-				type: 'bar'
+				type: 'bar',
+				zoomType: 'X'
 			},
 			title: {
 				text: 'Your Expenses Summarized By Tags'
