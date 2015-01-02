@@ -294,6 +294,7 @@ var app = angular.module('syncBudget',['ngRoute','ui.bootstrap','ngTouch','ngAni
 		/*----------------------------------------------------------*/
 		app.controller('showExpensesController', function($scope, $modal, $log){
 			$scope.buttonsState = {};
+			$scope.total = 0;
 			$scope.showExpensesBy = "Daily";
 			$scope.buttonsState.showDateField = true;
 			$scope.buttonsState.showMonthField = true;
@@ -321,31 +322,46 @@ var app = angular.module('syncBudget',['ngRoute','ui.bootstrap','ngTouch','ngAni
 				$scope.expenses = expensesTable.query({year:queryYear });
 
 			};
+			$scope.getTotal = function(){
+				for(var i = 0; i < $scope.expenses.length; i++){
+					$scope.total += Number($scope.expenses[i].get('amount'));
+
+				}
+			};
 
 			$scope.getExpenses = function(){
-				console.log("Get Expenses called");
-				console.log($scope.showExpensesBy);
+				$scope.total = 0;
 				if($scope.showExpensesBy === "Daily"){
 					$scope.buttonsState.showDateField = true;
 					$scope.buttonsState.showMonthField = true;
 					$scope.getDailyExpenses(Number($scope.currentDate),Number($scope.currentMonth),Number($scope.currentYear));
+					$scope.getTotal();
+
 				}
 				else if($scope.showExpensesBy === "Monthly"){
 					$scope.buttonsState.showDateField = false;
 					$scope.buttonsState.showMonthField = true;
 
 					$scope.getMonthlyExpenses(Number($scope.currentMonth),Number($scope.currentYear));
+					$scope.getTotal();
+
 				}
 				else if($scope.showExpensesBy === "Yearly"){
 					$scope.buttonsState.showDateField = false;
 					$scope.buttonsState.showMonthField = false;
 					$scope.getYearlyExpenses(Number($scope.currentYear));
+					$scope.getTotal();
+
 				}
 
 			};
 
-
 			$scope.getDailyExpenses($scope.currentDate,$scope.currentMonth,$scope.currentYear);
+			$scope.getTotal();
+
+
+
+
 
 			$scope.delete = function(expense){
 				expense.deleteRecord();
