@@ -1,9 +1,19 @@
 <div ng-controller="showExpensesByCategoryController">
   <h1>My Expenses By {{showCategoryName}}</h1>
   <h2>Total = {{total}}</h2>
+  <div style="padding: 10px 0;" class="btn-group">
+    <label ng-click="showExpensesBy = 'Daily'; getExpenses()" class="btn btn-success" ng-model="showExpensesBy" btn-radio="'Daily'" >Daily</label>
+    <label ng-click="showExpensesBy = 'Monthly'; getExpenses()" class="btn btn-success" ng-model="showExpensesBy" btn-radio="'Monthly'" >Monthly</label>
+    <label ng-click="showExpensesBy = 'Yearly'; getExpenses()" class="btn btn-success" ng-model="showExpensesBy" btn-radio="'Yearly'" >Yearly</label>
+  </div>
   <form class="form-inline">
     <div class="form-group">
-      <label class="sr-only">Choose Category</label>
+      <label ng-show="buttonsState.showDateField" class="form-control">Date</label>
+      <input ng-show="buttonsState.showDateField" type="text"  class="form-control" ng-model="currentDate" placeholder="Enter Day eg:8">
+      <label ng-show="buttonsState.showMonthField" class="form-control">Month</label>
+      <input ng-show="buttonsState.showMonthField" type="text"  class="form-control" ng-model="currentMonth" placeholder="Enter Month">
+      <label class="form-control">Year</label>
+      <input type="text"  class="form-control" ng-model="currentYear" placeholder="Enter Year eg:2015">
       <input type="text" typeahead="category for category in categories | filter:$viewValue | limitTo:8" class="form-control" ng-model="showCategoryName" placeholder="Search Category">
     </div>
     <button ng-click="getExpenses()" type="submit" class="btn btn-default">Show</button>

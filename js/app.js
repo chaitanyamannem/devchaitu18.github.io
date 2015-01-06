@@ -388,20 +388,73 @@ var app = angular.module('syncBudget',['ngRoute','ui.bootstrap','ngTouch','ngAni
 			for (var i=0; i < allCategories.length; i++) {
 				$scope.categories.push(allCategories[i].get('name'));
 			}
-			$scope.getExpenses = function(){
-				console.log("Get Expenses called");
-				$scope.total = 0;
-				var store = $scope.datastore;
-				var expensesTable = store.getTable('expenses');
-				$scope.expenses = expensesTable.query({category: $scope.showCategoryName});
-				for (var i=0; i < $scope.expenses.length; i++) {
+
+			$scope.buttonsState = {};
+
+			$scope.showExpensesBy = "Daily";
+			$scope.buttonsState.showDateField = true;
+			$scope.buttonsState.showMonthField = true;
+			$scope.today = new Date();
+			$scope.currentDate = $scope.today.getDate();
+			$scope.currentMonth = $scope.today.getMonth();
+			$scope.currentYear = $scope.today.getFullYear();
+			var store = $scope.datastore;
+			var expensesTable = store.getTable('expenses');
+			$scope.getDailyExpenses = function(queryDate,queryMonth,queryYear) {
+
+				$scope.expenses = expensesTable.query({date:queryDate,
+					month: queryMonth,
+					year:queryYear,
+					category: $scope.showCategoryName});
+
+			};
+			$scope.getMonthlyExpenses = function(queryMonth,queryYear) {
+
+				$scope.expenses = expensesTable.query({month: queryMonth,
+					year:queryYear,
+					category: $scope.showCategoryName});
+
+			};
+			$scope.getYearlyExpenses = function(queryYear) {
+
+				$scope.expenses = expensesTable.query({year:queryYear, category: $scope.showCategoryName });
+
+			};
+			$scope.getTotal = function(){
+				for(var i = 0; i < $scope.expenses.length; i++){
 					$scope.total += Number($scope.expenses[i].get('amount'));
-					$log.info($scope.expenses[i].get('tags'));
+
 				}
-				
 			};
 
-			$scope.getExpenses();
+			$scope.getExpenses = function(){
+				$scope.total = 0;
+				if($scope.showExpensesBy === "Daily"){
+					$scope.buttonsState.showDateField = true;
+					$scope.buttonsState.showMonthField = true;
+					$scope.getDailyExpenses(Number($scope.currentDate),Number($scope.currentMonth),Number($scope.currentYear));
+					$scope.getTotal();
+
+				}
+				else if($scope.showExpensesBy === "Monthly"){
+					$scope.buttonsState.showDateField = false;
+					$scope.buttonsState.showMonthField = true;
+
+					$scope.getMonthlyExpenses(Number($scope.currentMonth),Number($scope.currentYear));
+					$scope.getTotal();
+
+				}
+				else if($scope.showExpensesBy === "Yearly"){
+					$scope.buttonsState.showDateField = false;
+					$scope.buttonsState.showMonthField = false;
+					$scope.getYearlyExpenses(Number($scope.currentYear));
+					$scope.getTotal();
+
+				}
+
+			};
+
+
 
 			$scope.delete = function(expense){
 				expense.deleteRecord();
