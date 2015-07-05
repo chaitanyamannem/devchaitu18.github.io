@@ -606,8 +606,15 @@ var app = angular.module('syncBudget',['ngRoute','ui.bootstrap','ngTouch','ngAni
 		/*----------------------------------------------------------*/
 		app.controller('showGraphsController', function($scope){
 
-			var queryMonth = 11;
-			var queryYear = 2014;
+			$scope.today = new Date();
+			$scope.currentDate = $scope.today.getDate();
+			$scope.currentMonth = $scope.today.getMonth();
+			$scope.currentYear = $scope.today.getFullYear();
+			var queryMonth = $scope.currentMonth;
+			var queryYear = $scope.currentYear;
+			console.log("query month and year");
+			console.log(queryMonth);
+			console.log(queryYear);
 			var expensesForMonth = function(queryMonth,queryYear){
 
 			return $scope.datastore.getTable('expenses').query({month : queryMonth, year : queryYear });
