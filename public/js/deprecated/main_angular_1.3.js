@@ -847,7 +847,8 @@
                 date: $scope.dt.getDate(),
                 month: $scope.dt.getMonth(),
                 year: $scope.dt.getFullYear(),
-                tags: $scope.thisExpenseTags
+                tags: $scope.thisExpenseTags,
+                userId: $rootScope.user.uid
             });
 
             // Add new tags to tags table
