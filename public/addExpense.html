@@ -1,33 +1,33 @@
 <div ng-controller="addExpenseController">
-  <h1>Add an Expense</h1>
-  <form ng-show="{{isClientAuthenticated}}"  role="form">
+    <h1>Add an Expense</h1>
+    <form ng-show="isClientAuthenticated" role="form">
         <div class="form-group">
-          <label for="">Amount</label>
-          <input ng-model="expenseAmount" class="form-control"  placeholder="Enter Amount">
+            <label for="">Amount</label>
+            <input ng-model="expenseAmount" class="form-control" placeholder="Enter Amount">
         </div>
         <div class="form-group">
-          <label for="">Category</label>
-          <input ng-model="expenseCategory" typeahead="category for category in categories | filter:$viewValue | limitTo:8" class="form-control"  placeholder="Category">
+            <label for="">Category</label>
+            <input ng-model="expenseCategory" typeahead="category for category in categories | filter:$viewValue | limitTo:8" class="form-control" placeholder="Category">
         </div>
         <div class="form-group">
-          <p class="input-group">
-            <input type="text" class="form-control" datepicker-popup="dd-MMMM-yyyy" ng-model="dt" is-open="opened"  datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />
-            <span class="input-group-btn">
+            <p class="input-group">
+                <input type="text" class="form-control" datepicker-popup="dd-MMMM-yyyy" ng-model="dt" is-open="opened" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />
+                <span class="input-group-btn">
               <button type="button" class="btn btn-default" ng-click="open($event)"><i class="fa fa-calendar"></i></button>
             </span>
-          </p>
+            </p>
         </div>
         <div class="form-group">
-          <label for="">Tags</label>
-          <p>{{thisExpenseTags.toString()}}</p>
-          <ul  id="expense_tag_handler" class="tagHandlerContainer">
-          </ul>
+            <label for="">Tags</label>
+            <p>{{thisExpenseTags.toString()}}</p>
+            <ul id="expense_tag_handler" class="tagHandlerContainer">
+            </ul>
 
         </div>
 
 
-      <div ng-show="isExpenseAdded" class="alert alert-success" role="alert">Success, your expense is saved</div>
-      <button ng-click="addExpense()" type="submit" class="btn btn-default">Save Expense</button>
-  </form>
+        <div ng-show="isExpenseAdded" class="alert alert-success" role="alert">Success, your expense is saved</div>
+        <button ng-click="addExpense()" type="submit" class="btn btn-default">Save Expense</button>
+    </form>
 
-  </div>
+</div>

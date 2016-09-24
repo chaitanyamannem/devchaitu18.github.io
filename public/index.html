@@ -22,7 +22,7 @@
 
     <!-- Angular JS 1.3.3 -->
     <script type="text/javascript" src="libs/angular.js"></script>
-    <script src="libs/angular-route.min.js"></script>
+    <script src="libs/angular-route.js"></script>
     <script src="libs/angular-ui-bootstrap.min.js"></script>
     <script src="libs/angular-touch.min.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.3/angular-animate.js"></script>
@@ -30,7 +30,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="//code.jquery.com/ui/1.8.24/jquery-ui.js"></script>
     <script src="libs/taghandler.js"></script>
-    <script src="libs/underscore.min.js"></script>
+    <script src="libs/underscore.js"></script>
     <script src="libs/highcharts.js"></script>
     <script src="libs/jqcloud.min.js"></script>
     <script src="libs/bootstrap/js/bootstrap.min.js"></script>
@@ -104,7 +104,7 @@
                     </li>
                     <li><a href="#contact">Contact</a></li>
                     <li><a href="#blog">Blog</a></li>
-                    <li><a href="#reset">Reset Data</a></li>
+                    <li><a href="#" ng-click="logout()">Logout</a></li>
                 </ul>
             </div>
             <!--/.nav-collapse -->
@@ -115,7 +115,7 @@
 
         <div class="starter-template">
 
-            <button ng-hide="{{isClientAuthenticated}}" type="button" id="connectDropbox" ng-click="connectGoogle()" class=" btn btn-default">Connect With Google</button>
+            <button ng-hide="isClientAuthenticated" type="button" ng-click="connectGoogle()" class=" btn btn-default">Connect With Google</button>
 
         </div>
         <div id="mainContainer">

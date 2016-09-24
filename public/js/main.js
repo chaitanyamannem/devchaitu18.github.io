@@ -141,8 +141,8 @@
             templateUrl: 'blog.html'
         })
 
-        .when('/reset', {
-            templateUrl: 'reset.html'
+        .when('/logout', {
+            templateUrl: 'logut.html'
         })
 
         .when('/home', {
@@ -198,18 +198,21 @@
 
     });
 
+    /*-------------------- This portion is executed first ---------------*/
     //firebase Autorization is done here
     app.run(function ($rootScope, $firebaseAuth, $firebaseObject) {
 
         $rootScope.isClientAuthenticated = false;
-
+        var auth = $firebaseAuth();
         $rootScope.connectGoogle = function () {
-            var auth = $firebaseAuth();
+
             auth.$signInWithPopup("google").then(function (authData) {
                 $rootScope.isClientAuthenticated = true;
-                $rootScope.displayName = authData.user.displayName;
-                console.log(authData);
+                $rootScope.user = authData.user;
+                $rootScope.displayName = $rootScope.user.displayName;
                 console.log("Signed in as:", authData.user.uid);
+                console.log("Signed in as:", $rootScope.displayName);
+
             }).catch(function (error) {
                 console.log("Authentication failed:", error);
             });
@@ -217,39 +220,17 @@
 
         };
 
+        //TODO
+        $rootScope.logout = function () {
 
 
-
-
-
-
-
-
-        //        if (client.isAuthenticated()) {
-        //            console.log("First check client is Authenticated::");
-        //            console.log(client.isAuthenticated());
-        //            $rootScope.isClientAuthenticated = true;
-        //
-        ////            $rootScope.getUser();
-        //
-        //
-        //
-        //        }
-
-        // Authenticate when the user clicks the connect button.
-        //        $('#connectDropbox').click(function (e) {
-        //            e.preventDefault();
-        //            client.authenticate();
-        //            console.log("Client.autenticate called when connect to dropbox is clicked");
-        //            if (client.isAuthenticated()) {
-        //                $rootScope.isClientAuthenticated = true;
-        //                $rootScope.getUser();
-        //            }
-        //
-        //        });
+            console.log("logout called ");
+        };
 
     });
-    /*----------------------------------------------------------*/
+
+
+    /*--------------------------------------------------------------------------------*/
     app.controller('showCategoriesController', function ($scope, $log) {
 
 
@@ -818,22 +799,32 @@
     });
 
     /*----------------------------------------------------------*/
-    app.controller('addExpenseController', function ($scope, $timeout) {
+    app.controller('addExpenseController', function ($scope, $timeout, $firebaseArray) {
+
+        var expensesRef = firebase.database().ref().child("expenses");
+        var tagsRef = firebase.database().ref().child("tags");
+        var categoriesRef = firebase.database().ref().child("categories");
+        // download the data into a local object
+        var expenses = $firebaseArray(expensesRef);
+        var tags = $firebaseArray(tagsRef);
+
         $scope.isExpenseAdded = false;
         $scope.thisExpenseTags = [];
-        $scope.allTags = [];
+        $scope.allTags = ["a", "b", "c"];
         $scope.categories = [];
-        var tagsRecords = $scope.datastore.getTable('tags').query();
-        var allCategories = $scope.datastore.getTable('categories').query();
-        for (var i = 0; i < allCategories.length; i++) {
-            $scope.categories.push(allCategories[i].get('name'));
-        }
-        var getTags = function () {
-            for (var i = 0; i < tagsRecords.length; i++) {
-                $scope.allTags.push(tagsRecords[i].get('name'));
-            }
-        };
-        getTags();
+
+
+        //			var allCategories = $scope.datastore.getTable('categories').query();
+        //			for (var i=0; i < allCategories.length; i++) {
+        //				$scope.categories.push(allCategories[i].get('name'));
+        //			}
+        //        var getTags = function () {
+        //            for (var i = 0; i < tags.length; i++) {
+        //                $scope.allTags.push(tags[i].get('name'));
+        //                console.log(tags[i].get('name'));
+        //            }
+        //        };
+        //        getTags();
         $("#expense_tag_handler").tagHandler({
             availableTags: $scope.allTags,
             onAdd: function (tag) {
@@ -847,34 +838,28 @@
             autocomplete: true
         });
 
-
-
-
         $scope.addExpense = function () {
             console.log("Add expense called");
-            var store = $scope.datastore;
-            var expensesTable = store.getTable('expenses');
             // Add expense to expenses table
-            var newExpenseRecord = expensesTable.insert({
+            expenses.$add({
                 amount: $scope.expenseAmount,
                 category: $scope.expenseCategory,
                 date: $scope.dt.getDate(),
                 month: $scope.dt.getMonth(),
                 year: $scope.dt.getFullYear(),
                 tags: $scope.thisExpenseTags
-
             });
+
             // Add new tags to tags table
-            var tagsTable = store.getTable('tags');
-            //Update tags List with latest
-            getTags();
+
             $scope.newTags = _.difference($scope.thisExpenseTags, $scope.allTags);
             var insertTags = $scope.newTags;
             for (var i = 0; i < insertTags.length; i++) {
-                tagsTable.insert({
+                tags.$add({
                     name: insertTags[i]
                 });
             }
+
             $scope.isExpenseAdded = true;
             $timeout(function () {
                 $scope.isExpenseAdded = false;
@@ -906,29 +891,12 @@
         };
 
 
+
+
+
     });
     /*----------------------------------------------------------*/
     app.controller('welcomeController', function ($scope, $firebaseObject, $firebaseAuth) {
-
-
-
-        $scope.connectGoogle = function () {
-            var auth = $firebaseAuth();
-            auth.$signInWithPopup("google").then(function (firebaseUser) {
-                console.log("Signed in as:", firebaseUser.uid);
-            }).catch(function (error) {
-                console.log("Authentication failed:", error);
-            });
-
-            var ref = firebase.database().ref().child("data");
-            // download the data into a local object
-            var syncObject = $firebaseObject(ref);
-            // synchronize the object with a three-way data binding
-            // click on `index.html` above to see it used in the DOM!
-            syncObject.$bindTo($scope, "data");
-        };
-
-
 
 
 
