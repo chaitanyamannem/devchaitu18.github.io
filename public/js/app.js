@@ -19,6 +19,26 @@ app.config(function ($routeProvider) {
                 }
             }
         })
+        .when('/userPref', {
+            template: '<edit-user-pref user-preferences="$resolve.userPreferences"></edit-user-pref>',
+            resolve: {
+                userPreferences: function (fbRef, $firebaseObject, auth) {
+                    return auth.$requireSignIn().then(function () {
+                        return $firebaseObject(fbRef.getPreferencesRef()).$loaded();
+                    })
+                }
+            }
+        })
+        .when('/categories', {
+            template: '<categories categories="$resolve.categories"></categories>',
+            resolve: {
+                categories: function (fbRef, $firebaseArray, auth) {
+                    return auth.$requireSignIn().then(function () {
+                        return $firebaseArray(fbRef.getCategoriesRef()).$loaded();
+                    })
+                }
+            }
+        })
         .when('/login', {
             template: '<login current-auth="$resolve.currentAuth"></login>',
             resolve: {

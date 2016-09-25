@@ -1,0 +1,17 @@
+<nav></nav>
+
+<h1>User Preferences</h1>
+
+<form class="form-inline">
+    <label for="displayName">Display Name</label>
+    <input type="text" id="displayName" placeholder="Display Name" class="form-control" ng-model="$ctrl.userPreferences.displayName">
+    <br><br>
+
+    <label for="currencyType">Currency Type</label>
+    <select name="currencyType" id="currencyType" ng-model="$ctrl.userPreferences.currencyType" ng-options="currencyType for currencyType in $ctrl.currencyTypes" class="form-control"></select>
+
+    <br><br>
+
+    <button class="btn btn-primary btn-sm" ng-click="$ctrl.save()">Save</button>
+    <button class="btn btn-primary btn-sm" ng-click="$ctrl.cancel()">Cancel</button>
+</form>

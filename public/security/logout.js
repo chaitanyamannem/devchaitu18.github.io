@@ -8,3 +8,5 @@ angular.module('syncBudget').component('logout', {
         }, 500);
     }
 })
+
+// TODO resolve preferences and logout issue
