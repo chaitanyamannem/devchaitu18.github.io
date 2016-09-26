@@ -7,10 +7,15 @@ angular.module('syncBudget').component('categories', {
 
         this.addNewCategory = function () {
             this.categories.$add({
-                name: this.newCategoryName
+                name: this.newCategoryName,
+                icon: this.iconName
             });
             this.newCategoryName = '';
             console.log("category saved");
+        }
+
+        this.deleteCategory = function (category) {
+            this.categories.$remove(category);
         }
 
         this.iconName = "folder";
