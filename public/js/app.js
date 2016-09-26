@@ -1,4 +1,4 @@
-var app = angular.module('syncBudget', ['ngRoute', 'firebase']);
+var app = angular.module('syncBudget', ['ngRoute', 'ui.bootstrap', 'firebase']);
 
 app.run(function ($rootScope, $location) {
     $rootScope.$on("$routeChangeError", function (e, next, prev, err) {

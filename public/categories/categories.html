@@ -2,17 +2,18 @@
 <h1>Categories</h1>
 <div class="row">
     <div class="col-md-4 " ng-repeat="category in $ctrl.categories">
-        <p class="well">{{category.name}}</p>
+        <div class="well">{{category.name}}</div>
     </div>
 
     <div class="col-md-8">
         <form role="form">
             <div class="col-md-4">
 
-                <div style="color: #fff;background-color: #1D9E74;">
+                <div style="color: #fff;background-color: #1d9d74;width:180px; height:180px; float:left; line-height: 180px;     text-align: center;
+            vertical-align: bottom;">
 
                     <h4 class="text-center">Icon Preview</h4>
-                    <span style=" height: 280px; padding-top: 100px; padding-left: 150px;" class="center-block fa fa-{{iconName}} fa-5x"></span>
+                    <span class="fa fa-{{$ctrl.iconName}} fa-5x"></span>
                 </div>
 
 
@@ -24,9 +25,9 @@
 
                 <div class="form-group">
 
-                    <label for="">Icon</label>
-                    <button ng-click="close()" type="button" class="close"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                    <input class="form-control" ng-model="iconName" placeholder="Search icon here" typeahead="icon for icon in icons | filter:$viewValue | limitTo:8">
+                    <label for="">Icon <a href="http://fontawesome.io/icons/" target="_blank"><i class="fa fa-info-circle"></i></a></label>
+                    <button ng-click="$ctrl.clearIconField()" type="button" class="close"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <input class="form-control" ng-model="$ctrl.iconName" placeholder="Search icon here" typeahead="icon for icon in $ctrl.icons | filter:$viewValue | limitTo:8">
 
 
 
