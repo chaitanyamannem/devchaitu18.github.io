@@ -1,4 +1,4 @@
-var app = angular.module('syncBudget', ['ngRoute', 'ui.bootstrap', 'firebase']);
+var app = angular.module('syncBudget', ['ngRoute', 'ui.bootstrap', 'firebase', 'ngMessages']);
 
 app.run(function ($rootScope, $location) {
     $rootScope.$on("$routeChangeError", function (e, next, prev, err) {
@@ -39,6 +39,38 @@ app.config(function ($routeProvider) {
                 }
             }
         })
+        .when('/addExpense', {
+            template: '<add-expense tags="$resolve.tags"  categories="$resolve.categories" expenses="$resolve.expenses"></add-expense>',
+            resolve: {
+                expenses: function (fbRef, $firebaseArray, auth) {
+                    return auth.$requireSignIn().then(function () {
+                        return $firebaseArray(fbRef.getExpensesRef()).$loaded();
+                    })
+                },
+                categories: function (fbRef, $firebaseArray, auth) {
+                    return auth.$requireSignIn().then(function () {
+                        return $firebaseArray(fbRef.getCategoriesRef()).$loaded();
+                    })
+                },
+                tags: function (fbRef, $firebaseArray, auth) {
+                    return auth.$requireSignIn().then(function () {
+                        return $firebaseArray(fbRef.getTagsRef()).$loaded();
+                    })
+                }
+            }
+
+
+        })
+        .when('/showExpenses', {
+            template: '<show-expenses expenses="$resolve.expenses"></show-expenses>',
+            resolve: {
+                expenses: function (fbRef, $firebaseArray, auth) {
+                    return auth.$requireSignIn().then(function () {
+                        return $firebaseArray(fbRef.getExpensesRef()).$loaded();
+                    })
+                }
+            }
+        })
         .when('/login', {
             template: '<login current-auth="$resolve.currentAuth"></login>',
             resolve: {
@@ -51,5 +83,22 @@ app.config(function ($routeProvider) {
             template: '<logout></logout>'
         })
         .otherwise('/home')
+
+})
+
+
+app.filter('calculate', function () {
+
+    //TODO regular expression for numeric expression validation
+
+    return function (numericExpression) {
+
+        if (numericExpression == undefined || numericExpression.endsWith('+') || numericExpression.endsWith('-') || numericExpression.endsWith('/') || numericExpression.endsWith('*') || numericExpression.endsWith('%')) {
+            return numericExpression;
+        } else {
+            return math.eval(numericExpression);
+
+        }
+    }
 
 })

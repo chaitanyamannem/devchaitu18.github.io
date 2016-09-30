@@ -814,17 +814,7 @@
         $scope.categories = [];
 
 
-        //			var allCategories = $scope.datastore.getTable('categories').query();
-        //			for (var i=0; i < allCategories.length; i++) {
-        //				$scope.categories.push(allCategories[i].get('name'));
-        //			}
-        //        var getTags = function () {
-        //            for (var i = 0; i < tags.length; i++) {
-        //                $scope.allTags.push(tags[i].get('name'));
-        //                console.log(tags[i].get('name'));
-        //            }
-        //        };
-        //        getTags();
+       
         $("#expense_tag_handler").tagHandler({
             availableTags: $scope.allTags,
             onAdd: function (tag) {

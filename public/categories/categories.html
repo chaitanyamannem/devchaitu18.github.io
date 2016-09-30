@@ -2,7 +2,7 @@
 <h1>Categories</h1>
 <div class="row">
     <div ng-mouseenter="hovering = true" ng-mouseleave="hovering = false" class="col-md-4 " ng-repeat="category in $ctrl.categories">
-        <div class="well"><span class="fa fa-{{category.icon}} fa-3x"></span><small style="font-size: 20px;" class="text-muted">    {{category.name}}</small><span ng-show="hovering" ng-mouseenter="delhovering = true" ng-mouseleave="delhovering = false" ng-class="{'hover-delete':delhovering}" ng-click="$ctrl.deleteCategory(category)" class="fa fa-remove pull-right"></span></div>
+        <div class="well"><span style="vertical-align: middle;" class="fa fa-{{category.icon}} fa-3x"></span><small style="font-size: 20px;" class="text-muted">    {{category.name}}</small><span ng-show="hovering" ng-mouseenter="delhovering = true" ng-mouseleave="delhovering = false" ng-class="{'hover-delete':delhovering}" ng-click="$ctrl.deleteCategory(category)" class="fa fa-remove pull-right"></span></div>
 
     </div>
 
@@ -51,5 +51,3 @@
         </form>
     </div>
 </div>
-
-<!--TODO Adjust icon and category name height-->

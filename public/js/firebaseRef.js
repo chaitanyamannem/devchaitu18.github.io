@@ -5,6 +5,12 @@ angular.module('syncBudget').factory('fbRef', function (rootRef, auth) {
         },
         getCategoriesRef: function () {
             return rootRef.child('categories').child(auth.$getAuth().uid);
+        },
+        getTagsRef: function () {
+            return rootRef.child('tags').child(auth.$getAuth().uid);
+        },
+        getExpensesRef: function () {
+            return rootRef.child('expenses').child(auth.$getAuth().uid);
         }
     }
 })
