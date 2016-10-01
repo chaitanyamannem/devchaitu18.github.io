@@ -61,6 +61,24 @@ angular.module('syncBudget').component('addExpense', {
             this.dt = null;
         };
 
+        function pad(number) {
+            if (number < 10) {
+                return '0' + number;
+            }
+            return number;
+        }
+
+        this.formattedExpenseDate = function () {
+
+            var expenseDate = Number(this.dt.getFullYear() + '' + pad(this.dt.getMonth() + 1) + '' + pad(this.dt.getDate()));
+            console.log('expenseDate' + expenseDate);
+            console.log(typeof expenseDate);
+            return expenseDate;
+
+        };
+
+
+
 
 
         this.addExpense = function () {
@@ -70,14 +88,14 @@ angular.module('syncBudget').component('addExpense', {
 
             var calculatedExpenseAmount = $filter('calculate')(this.expenseAmount);
 
+
+
             // Add expense to expenses table
             this.expenses.$add({
                 amount: calculatedExpenseAmount,
                 category: this.expenseCategory,
-                day: this.dt.getDate(),
-                month: this.dt.getMonth() + 1,
-                year: this.dt.getFullYear(),
-                tags: myTaggle.getTagValues()
+                tags: myTaggle.getTagValues(),
+                date: this.formattedExpenseDate()
 
             });
 

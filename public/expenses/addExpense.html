@@ -37,7 +37,7 @@
         <div ng-repeat="expense in $ctrl.expenses | limitTo : -5">
 
             <div class="well">Amount: {{expense.amount}}
-                <br> SpentOn: {{expense.day}}/{{expense.month}}/{{expense.year}}
+                <br> SpentOn: {{expense.date | limitTo : 2 : 6}}/{{expense.date | limitTo : 2 : 4}}/{{expense.date | limitTo : 4 }}
                 <br> Category: <span style="vertical-align: middle;" class="fa fa-{{expense.category.icon}} fa-2x"></span> {{expense.category.name}}
                 <br> Tags: {{expense.tags}}
 

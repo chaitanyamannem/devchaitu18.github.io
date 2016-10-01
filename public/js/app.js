@@ -62,12 +62,10 @@ app.config(function ($routeProvider) {
 
         })
         .when('/showExpenses', {
-            template: '<show-expenses expenses="$resolve.expenses"></show-expenses>',
+            template: '<show-expenses></show-expenses>',
             resolve: {
-                expenses: function (fbRef, $firebaseArray, auth) {
-                    return auth.$requireSignIn().then(function () {
-                        return $firebaseArray(fbRef.getExpensesRef()).$loaded();
-                    })
+                currentAuth: function (auth) {
+                    return auth.$requireSignIn();
                 }
             }
         })

@@ -12,3 +12,17 @@
 [info] Public Directory: public
 [info] 
 [info] Server listening at: http://localhost:5000
+[debug] ----------------------------------------------------------------------
+[debug] Command:      node /usr/local/bin/firebase serve
+[debug] CLI Version:  3.0.7
+[debug] Platform:     darwin
+[debug] Node Version: v0.10.34
+[debug] Time:         Sat Oct 01 2016 12:56:17 GMT+0530 (IST)
+[debug] ----------------------------------------------------------------------
+[debug] 
+[info] Starting Firebase development server...
+[info] 
+[info] Project Directory: /Users/chaitanya/Google Drive/MyGCloudWorkspace/Work/devchaitu18.github.io
+[info] Public Directory: public
+[info] 
+[info] Server listening at: http://localhost:5000
