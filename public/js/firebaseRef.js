@@ -11,6 +11,9 @@ angular.module('syncBudget').factory('fbRef', function (rootRef, auth) {
         },
         getExpensesRef: function () {
             return rootRef.child('expenses').child(auth.$getAuth().uid);
+        },
+        getIncomesRef: function () {
+            return rootRef.child('incomes').child(auth.$getAuth().uid);
         }
     }
 })

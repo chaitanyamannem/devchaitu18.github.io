@@ -1,0 +1,54 @@
+<nav></nav>
+<div class="row">
+    <div class="col-md-4">
+        <h1>Add Income</h1>
+        <form name="addIncomeForm" role="form">
+            <div class="form-group">
+                <label for="">Amount: {{$ctrl.incomeAmount | calculate }}</label>
+                <input ng-model="$ctrl.incomeAmount" class="form-control" placeholder="Enter Amount">
+            </div>
+
+            <div class="form-group">
+                <label for="">Category: <span style="vertical-align: middle;" class="fa fa-{{$ctrl.incomeCategory.icon}} fa-2x"></span> {{$ctrl.incomeCategory.name}}</label>
+                <input ng-model="$ctrl.incomeCategory" typeahead="category as category.name for category in $ctrl.categories | filter:$viewValue | limitTo:8" class="form-control" placeholder="Category">
+
+            </div>
+            <div class="form-group">
+                <label for="">Earned On: {{$ctrl.dt | date}}</label>
+                <p class="input-group">
+                    <input type="text" class="form-control" datepicker-popup="dd-MMMM-yyyy" ng-model="$ctrl.dt" is-open="$ctrl.opened" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />
+                    <span class="input-group-btn">
+              <button type="button" class="btn btn-default" ng-click="$ctrl.open($event)"><i class="fa fa-calendar"></i></button>
+            </span>
+                </p>
+            </div>
+            <div class="form-group">
+                <label>Tags:</label>
+                <div id="incomeTags" class="input textarea">
+
+                </div>
+            </div>
+            <div class="form-group">
+                <textarea class="form-control" ng-model="$ctrl.incomeNotes" placeholder="Notes"></textarea>
+            </div>
+
+            <button ng-click="$ctrl.addIncome()" type="submit" class="btn btn-default">Save Income</button>
+        </form>
+    </div>
+    <div class="col-md-8">
+        <h1>My Last 5 Earnings</h1>
+        <div ng-repeat="income in $ctrl.incomes | limitTo : -5">
+
+            <div class="well">Amount: {{income.amount}}
+                <br> Earned On: {{income.date | limitTo : 2 : 6}}/{{income.date | limitTo : 2 : 4}}/{{income.date | limitTo : 4 }}
+                <br> Category: <span style="vertical-align: middle;" class="fa fa-{{income.category.icon}} fa-2x"></span> {{income.category.name}}
+                <br> Tags: {{income.tags}}
+
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<!--    FUTURE : Clear category field = NICE TO HAVE -->
+<!-- TODO date is coming with time on intial loading of add expense page, no problem for functionality only UI Issue-->

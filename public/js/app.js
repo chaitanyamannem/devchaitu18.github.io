@@ -61,6 +61,28 @@ app.config(function ($routeProvider) {
 
 
         })
+        .when('/addIncome', {
+            template: '<add-income tags="$resolve.tags"  categories="$resolve.categories" incomes="$resolve.incomes"></add-income>',
+            resolve: {
+                incomes: function (fbRef, $firebaseArray, auth) {
+                    return auth.$requireSignIn().then(function () {
+                        return $firebaseArray(fbRef.getIncomesRef()).$loaded();
+                    })
+                },
+                categories: function (fbRef, $firebaseArray, auth) {
+                    return auth.$requireSignIn().then(function () {
+                        return $firebaseArray(fbRef.getCategoriesRef()).$loaded();
+                    })
+                },
+                tags: function (fbRef, $firebaseArray, auth) {
+                    return auth.$requireSignIn().then(function () {
+                        return $firebaseArray(fbRef.getTagsRef()).$loaded();
+                    })
+                }
+            }
+
+
+        })
         .when('/showExpenses', {
             template: '<show-expenses></show-expenses>',
             resolve: {
