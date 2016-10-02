@@ -1,0 +1,53 @@
+<nav></nav>
+<h1>Categories</h1>
+<div class="row">
+    <div ng-mouseenter="hovering = true" ng-mouseleave="hovering = false" class="col-md-4 " ng-repeat="category in $ctrl.categories">
+        <div class="well"><span style="vertical-align: middle;" class="fa fa-{{category.icon}} fa-3x"></span><small style="font-size: 20px;" class="text-muted">    {{category.name}}</small><span ng-show="hovering" ng-mouseenter="delhovering = true" ng-mouseleave="delhovering = false" ng-class="{'hover-delete':delhovering}" ng-click="$ctrl.deleteCategory(category)" class="fa fa-remove pull-right"></span></div>
+
+    </div>
+
+    <div class="col-md-8">
+        <form role="form">
+            <div class="col-md-4">
+
+                <div style="color: #fff;background-color: #1d9d74;width:180px; height:180px; float:left; line-height: 180px;     text-align: center;
+            vertical-align: bottom;">
+
+                    <h4 class="text-center">Icon Preview</h4>
+                    <span class="fa fa-{{$ctrl.iconName}} fa-5x"></span>
+                </div>
+
+
+
+
+            </div>
+
+            <div class="col-md-4">
+
+                <div class="form-group">
+
+                    <label for="">Icon <a href="http://fontawesome.io/icons/" target="_blank"><i class="fa fa-info-circle"></i></a></label>
+                    <button ng-click="$ctrl.clearIconField()" type="button" class="close"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <input class="form-control" ng-model="$ctrl.iconName" placeholder="Search icon here" typeahead="icon for icon in $ctrl.icons | filter:$viewValue | limitTo:8">
+
+
+
+                </div>
+
+
+                <div class="form-group">
+                    <label for="">Category name</label>
+                    <input ng-model="$ctrl.newCategoryName" class="form-control" placeholder="Enter Category Name">
+                </div>
+
+                <button ng-click="$ctrl.addNewCategory()" type="submit" class="btn btn-default">Add New Category</button>
+
+
+
+            </div>
+
+
+
+        </form>
+    </div>
+</div>

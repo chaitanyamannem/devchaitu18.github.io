@@ -1,0 +1,13 @@
+<h1 ng-hide="$ctrl.loggedIn">Welcome to SyncBudget</h1>
+
+<h2 ng-hide="$ctrl.loggedIn">Please Login</h2>
+
+<h1 ng-show="$ctrl.loggedIn">You have already logged in</h1>
+
+<button ng-hide="$ctrl.loggedIn" class="btn btn-primary" ng-click="$ctrl.googleLogin()">
+ Log In With Google
+</button>
+
+<br><br>
+
+<div class="alert alert-danger" ng-show="!!$ctrl.errorMessage">{{errorMessage}}</div>
