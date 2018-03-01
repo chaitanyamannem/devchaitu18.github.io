@@ -91,6 +91,14 @@ app.config(function ($routeProvider) {
                 }
             }
         })
+        // .when('/EditExpense', {
+        //     template: '<show-expenses></show-expenses>',
+        //     resolve: {
+        //         currentAuth: function (auth) {
+        //             return auth.$requireSignIn();
+        //         }
+        //     }
+        // })
         .when('/login', {
             template: '<login current-auth="$resolve.currentAuth"></login>',
             resolve: {

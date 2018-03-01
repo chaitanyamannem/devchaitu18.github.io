@@ -1,28 +1,41 @@
-[debug] ----------------------------------------------------------------------
-[debug] Command:      node /usr/local/bin/firebase serve
-[debug] CLI Version:  3.0.7
-[debug] Platform:     darwin
-[debug] Node Version: v0.10.34
-[debug] Time:         Wed Sep 28 2016 21:49:06 GMT+0530 (IST)
-[debug] ----------------------------------------------------------------------
+[debug] [2018-03-01T00:15:56.127Z] ----------------------------------------------------------------------
+[debug] [2018-03-01T00:15:56.129Z] Command:       /usr/local/bin/node /usr/local/bin/firebase serve
+[debug] [2018-03-01T00:15:56.130Z] CLI Version:   3.17.4
+[debug] [2018-03-01T00:15:56.130Z] Platform:      darwin
+[debug] [2018-03-01T00:15:56.130Z] Node Version:  v8.9.4
+[debug] [2018-03-01T00:15:56.130Z] Time:          Thu Mar 01 2018 05:45:56 GMT+0530 (IST)
+[debug] [2018-03-01T00:15:56.130Z] ----------------------------------------------------------------------
 [debug] 
-[info] Starting Firebase development server...
+[debug] [2018-03-01T00:15:56.145Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-03-01T00:15:56.145Z] > authorizing via signed-in user
+[debug] [2018-03-01T00:15:56.147Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2018-03-01T00:15:56.147Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ { refresh_token: '1/m_RB4187EB4-DkIPz-XQNFyT6eMcdUTa2_QtYg11yIk',
+  client_id: '563584335869-fgrhgmd47bqnekij5i8b5pr03ho849e6.apps.googleusercontent.com',
+  client_secret: 'j9iVZfS8kkCEFUPaAeJV0sAi',
+  grant_type: 'refresh_token',
+  scope: 'email https://www.googleapis.com/auth/cloud-platform https://www.googleapis.com/auth/cloudplatformprojects.readonly https://www.googleapis.com/auth/firebase openid' } 
+ Thu Mar 01 2018 05:45:56 GMT+0530 (IST)
+[debug] [2018-03-01T00:15:56.373Z] <<< HTTP RESPONSE 200
+[debug] [2018-03-01T00:15:56.394Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/syncbudget-250df  
+  
+ Thu Mar 01 2018 05:45:56 GMT+0530 (IST)
+[debug] [2018-03-01T00:15:58.148Z] <<< HTTP RESPONSE 200
+[debug] [2018-03-01T00:15:58.149Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/syncbudget-250df/tokens  
+  
+ Thu Mar 01 2018 05:45:58 GMT+0530 (IST)
+[debug] [2018-03-01T00:15:59.234Z] <<< HTTP RESPONSE 200
 [info] 
-[info] Project Directory: /Users/chaitanya/Google Drive/MyGCloudWorkspace/Work/devchaitu18.github.io
-[info] Public Directory: public
+[info] === Serving from '/Users/chaitanya/Documents/Tech/devchaitu18.github.io'...
 [info] 
-[info] Server listening at: http://localhost:5000
-[debug] ----------------------------------------------------------------------
-[debug] Command:      node /usr/local/bin/firebase serve
-[debug] CLI Version:  3.0.7
-[debug] Platform:     darwin
-[debug] Node Version: v0.10.34
-[debug] Time:         Sat Oct 01 2016 12:56:17 GMT+0530 (IST)
-[debug] ----------------------------------------------------------------------
-[debug] 
-[info] Starting Firebase development server...
-[info] 
-[info] Project Directory: /Users/chaitanya/Google Drive/MyGCloudWorkspace/Work/devchaitu18.github.io
-[info] Public Directory: public
-[info] 
-[info] Server listening at: http://localhost:5000
+[debug] [2018-03-01T00:15:59.236Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/syncbudget-250df  
+  
+ Thu Mar 01 2018 05:45:59 GMT+0530 (IST)
+[debug] [2018-03-01T00:16:00.835Z] <<< HTTP RESPONSE 200
+[debug] [2018-03-01T00:16:00.836Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/891732537840/clients/_:getWebAppConfig  
+  
+ Thu Mar 01 2018 05:46:00 GMT+0530 (IST)
+[debug] [2018-03-01T00:16:01.706Z] <<< HTTP RESPONSE 200
+[info] i  hosting: Serving hosting files from: public
+[info] ✔  hosting: Local server: http://localhost:5000
+
